@@ -15,7 +15,7 @@
     <style>
         img {
             border-radius: 8px;
-            height:200px;
+            height: 200px;
             width: 200px;
         }
     </style>
@@ -96,4 +96,3 @@
 <script src="{{ asset('js/app.js') }}" divscript></script>
 </body>
 </html>
-
