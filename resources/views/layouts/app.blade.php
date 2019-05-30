@@ -1,3 +1,4 @@
+@extends('style.css')
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -12,13 +13,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        img {
-            border-radius: 8px;
-            height: 200px;
-            width: 200px;
-        }
-    </style>
 </head>
 <body>
 <div id="app">
