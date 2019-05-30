@@ -1,16 +1,116 @@
-@extends('master')
-@section('title','Vehicle Shop')
+@extends('layouts.app')
 @section('content')
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                @endauth
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h3 class="my-4">Menu</h3>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                </div>
             </div>
-        @endif
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item One</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item Two</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item Three</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item Four</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item Five</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top"
+                                             src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                             alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#">Item Six</a>
+                                </h4>
+                                <h5><strong>Giá thuê: </strong>100000/1h</h5>
+                                <h5><strong>Tình trạng xe: </strong>Mua dưới 3 tháng</h5>
+                                <h5><strong>Trạng thái: </strong>Còn xe</h5>
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
