@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Type;
+use App\Model\Vehicle;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        return view('home');
+        $vehicle = vehicles::all();
+        $type = type::all();
+        return view('welcome',compact('vehicle','type'));
     }
 }
