@@ -10,4 +10,5 @@ return [
     've_status' => 'Tình trạng xe',
     'status' => 'Trạng thái',
     'rating' => 'Đánh giá',
+    'search' => 'Tìm kiếm',
 ];

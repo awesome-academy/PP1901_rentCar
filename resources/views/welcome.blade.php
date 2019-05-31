@@ -2,13 +2,17 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
+        <input type="search" name="search">
+        <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu') }}</h3>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                    @foreach($type as $types)
+                    <a href="#" class="list-group-item">{!! $types->name !!}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col-lg-9">

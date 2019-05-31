@@ -10,4 +10,5 @@ return [
     've_status' => 'Vehicle status',
     'status' => 'Status',
     'rating' => 'Rating',
+    'search' => 'Search',
 ];
