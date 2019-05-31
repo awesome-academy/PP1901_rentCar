@@ -8,17 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Cho thuê xe tự lái uy tín số 1 Việt Nam</title>
+    <title>{{ trans('messages.welcome') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        img {
-            border-radius: 8px;
-            height: 200px;
-            width: 200px;
-        }
-    </style>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -36,9 +30,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Vehicle Shop
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">{{ trans('messages.vehicle') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
