@@ -10,6 +10,7 @@ class User extends Model
     {
         return $this->belongsTo('app\Model\Role');
     }
+
     public function rentings()
     {
         return $this->hasMany('app\Model\Renting', 'user_id');
