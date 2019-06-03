@@ -23,6 +23,7 @@ class VehiclesTableSeeder extends Seeder
                   'color_id'=>rand(0,5),
                   'content'=>Str::random(15),
                   'price'=>rand(0,333),
+                  've_status_id'=>rand(0,2),
                   'created_at'=>date('Y-m-d H-i-s'),
                   'updated_at'=>date('Y-m-d H-i-s'),
               ]
