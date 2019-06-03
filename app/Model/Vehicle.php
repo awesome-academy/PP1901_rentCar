@@ -33,6 +33,6 @@ class Vehicle extends Model
         return $this->belongsTo('app\Model\Type');
     }
     public function rentings(){
-        return $this->hasMany('app\Model\Renting','vehicle_id');
+        return $this->hasMany('app\Model\Renting', 'vehicle_id');
     }
 }

@@ -12,6 +12,6 @@ class User extends Model
     }
     public function rentings()
     {
-        return $this->hasMany('app\Model\Renting','user_id');
+        return $this->hasMany('app\Model\Renting', 'user_id');
     }
 }
