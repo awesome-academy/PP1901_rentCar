@@ -19,5 +19,4 @@ return [
     'phone' => 'Số điện thoại',
     'card id' => 'Số chứng minh nhân dân',
     'birthday' => 'Ngày sinh',
-    'role' => 'Phân quyền',
 ];

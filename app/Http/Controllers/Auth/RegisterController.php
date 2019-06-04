@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -55,7 +55,6 @@ class RegisterController extends Controller
             'phone' => 'required|string|min:10',
             'card_id' => 'required|string|min:9',
             'birthday' => 'required|date',
-            'role' => 'required|string',
         ]);
     }
 
@@ -75,7 +74,6 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'card_id' => $data['phone'],
             'birthday' => $data['birthday'],
-            'role' => $data['role'],
         ]);
     }
 }
