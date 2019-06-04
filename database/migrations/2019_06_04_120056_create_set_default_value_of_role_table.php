@@ -25,6 +25,8 @@ class CreateSetDefaultValueOfRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('role_id')->default(null)->change();
+        });
     }
 }
