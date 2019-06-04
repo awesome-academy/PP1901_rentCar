@@ -19,4 +19,6 @@ return [
     'phone' => 'Phone',
     'card id' => 'Card ID',
     'birthday' => 'Birthday',
+    'forget_password' => 'Forgot Your Password?'
+    'remember' => 'Remember Me'
 ];

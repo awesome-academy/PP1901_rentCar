@@ -19,4 +19,6 @@ return [
     'phone' => 'Số điện thoại',
     'card id' => 'Số chứng minh nhân dân',
     'birthday' => 'Ngày sinh',
+    'forget_password' => 'Quên mật khẩu ?',
+    'remember' => 'Nhớ tài khoản này',
 ];
