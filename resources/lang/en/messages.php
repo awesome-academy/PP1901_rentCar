@@ -19,5 +19,4 @@ return [
     'phone' => 'Phone',
     'card id' => 'Card ID',
     'birthday' => 'Birthday',
-    'role' => 'Role',
 ];
