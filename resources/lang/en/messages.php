@@ -11,4 +11,12 @@ return [
     'status' => 'Status',
     'rating' => 'Rating',
     'search' => 'Search',
+    'name' => 'Name',
+    'email' => 'E-Mail Address',
+    'password' => 'Password',
+    'confirm password' => 'Confirm Password',
+    'address' => 'Address',
+    'phone' => 'Phone',
+    'card id' => 'Card ID',
+    'birthday' => 'Birthday',
 ];

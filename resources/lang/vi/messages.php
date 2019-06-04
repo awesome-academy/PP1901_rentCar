@@ -11,4 +11,12 @@ return [
     'status' => 'Trạng thái',
     'rating' => 'Đánh giá',
     'search' => 'Tìm kiếm',
+    'name' => 'Tên',
+    'email' => 'Email',
+    'password' => 'Mật khẩu',
+    'confirm password' => 'Xác nhận mật khẩu',
+    'address' => 'Địa chỉ',
+    'phone' => 'Số điện thoại',
+    'card id' => 'Số chứng minh nhân dân',
+    'birthday' => 'Ngày sinh',
 ];
