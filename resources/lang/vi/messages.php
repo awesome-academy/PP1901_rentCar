@@ -4,6 +4,7 @@ return [
     'welcome' => 'Cho thuê xe tự lái uy tín số 1 Việt Nam',
     'book' => 'Thuê xe này',
     'login' => 'Đăng nhập',
+    'logout' => 'Đăng xuất',
     'register' => 'Đăng kí',
     'menu' => 'DANH MỤC SẢN PHẨM',
     'price' => 'Giá thuê',
@@ -19,4 +20,8 @@ return [
     'phone' => 'Số điện thoại',
     'card id' => 'Số chứng minh nhân dân',
     'birthday' => 'Ngày sinh',
+    'forget_password' => 'Quên mật khẩu ?',
+    'remember' => 'Nhớ tài khoản này',
+    'profile' => 'Thông tin tài khoản',
+    'dashboard' => 'Bảng điều khiển',
 ];
