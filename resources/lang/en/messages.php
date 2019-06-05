@@ -4,6 +4,7 @@ return [
     'welcome' => 'Self-drive car with prestige No.1 in Vietnam',
     'book' => 'Book',
     'login' => 'Login',
+    'logout' => 'Logout',
     'register' => 'Register',
     'menu' => 'MENU',
     'price' => 'Price',
@@ -19,4 +20,8 @@ return [
     'phone' => 'Phone',
     'card id' => 'Card ID',
     'birthday' => 'Birthday',
+    'forget_password' => 'Forgot Your Password?',
+    'remember' => 'Remember Me',
+    'profile' => 'Profile',
+    'dashboard' => 'Dashboard',
 ];
