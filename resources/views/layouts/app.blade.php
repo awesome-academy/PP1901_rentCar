@@ -54,10 +54,18 @@
 
                             <ul class="dropdown-menu">
                                 <li>
+                                    <a href="">{{ trans('messages.profile') }}</a>
+                                </li>
+                                @if (Auth::check() && Auth::user()->role_id == 1)
+                               <li>
+                                   <a href="">{{ trans('messages.dashboard') }}</a>
+                               </li>
+                                @endif
+                                <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        {{ trans('messages.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
