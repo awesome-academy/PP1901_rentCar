@@ -56,7 +56,7 @@
                                 <li>
                                     <a href="">{{ trans('messages.profile') }}</a>
                                 </li>
-                                @if (Auth::check() && Auth::user()->role_id == 1)
+                                @if (Auth::check() && Auth::user()->role_id == 0)
                                <li>
                                    <a href="">{{ trans('messages.dashboard') }}</a>
                                </li>
