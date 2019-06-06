@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     public function vehicles(){
-        return $this->hasMany('app\Model\vehicle', 'status_id');
+        return $this->hasMany('App\Model\vehicle', 'status_id');
     }
 }

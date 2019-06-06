@@ -8,6 +8,6 @@ class Color extends Model
 {
     public function vehicles()
     {
-        return $this->hasMany('app\Model\Vehicle', 'color_id');
+        return $this->hasMany('App\Model\Vehicle', 'color_id');
     }
 }
