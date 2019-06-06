@@ -17,5 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin/home', 'HomeController@index')->middleware('checkAdmin');
 Route::get('/', 'HomeController@home')->name('welcome');
+Route::get('/ajax','HomeController@ajax')->name('ajaxGetVehicle');
+//Route::get('/admin/home', 'HomeController@index')->name('home_admin');
+Route::get('/admin/home', 'AdminController@home')->name('home_admin');

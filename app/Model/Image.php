@@ -8,6 +8,6 @@ class Image extends Model
 {
     public function vehicle()
     {
-        return $this->belongsTo('app\Model\Vehicle');
+        return $this->belongsTo('App\Model\Vehicle');
     }
 }

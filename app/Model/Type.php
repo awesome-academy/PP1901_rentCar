@@ -4,9 +4,11 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Type extends Model
 {
-    public function vehicles(){
-        return $this->hasMany('app\Model\vehicle', 'type_id');
+    protected $table = 'types';
+    public function vehicle(){
+        return $this->hasMany('App\Model\Vehicle', 'type_id');
     }
 }

@@ -7,6 +7,7 @@ return [
     'logout' => 'Logout',
     'register' => 'Register',
     'menu' => 'MENU',
+    'menu admin' => 'MENU',
     'price' => 'Price',
     've_status' => 'Vehicle status',
     'status' => 'Status',

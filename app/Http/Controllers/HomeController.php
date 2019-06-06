@@ -20,15 +20,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.home');
-    }
 
     public function home()
     {
         $vehicles = vehicle::all();
         $types = type::all();
         return view('welcome', compact('vehicles', 'types'));
+    }
+
+    public function ajax(Request $request){
+        $vehicles = Type::find($request->get('id'))->vehicle;
+        echo view('ajax',compact('vehicles'));
     }
 }

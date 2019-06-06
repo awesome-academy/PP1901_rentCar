@@ -13,6 +13,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <!-- Script-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
 <div id="app">
@@ -56,9 +60,9 @@
                                 <li>
                                     <a href="">{{ trans('messages.profile') }}</a>
                                 </li>
-                                @if (Auth::check() && Auth::user()->role_id == 1)
+                                @if (Auth::check() && Auth::user()->role_id == 0)
                                <li>
-                                   <a href="">{{ trans('messages.dashboard') }}</a>
+                                   <a href="{{ route('home_admin') }}">{{ trans('messages.dashboard') }}</a>
                                </li>
                                 @endif
                                 <li>
