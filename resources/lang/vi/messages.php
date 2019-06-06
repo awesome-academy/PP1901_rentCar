@@ -7,6 +7,7 @@ return [
     'logout' => 'Đăng xuất',
     'register' => 'Đăng kí',
     'menu' => 'DANH MỤC SẢN PHẨM',
+    'menu admin' => 'DANH MỤC QUẢN LÝ',
     'price' => 'Giá thuê',
     've_status' => 'Tình trạng xe',
     'status' => 'Trạng thái',
