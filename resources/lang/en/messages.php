@@ -25,4 +25,6 @@ return [
     'remember' => 'Remember Me',
     'profile' => 'Profile',
     'dashboard' => 'Dashboard',
+    'update' => 'Update',
+    'update message' => 'Update success!'
 ];
