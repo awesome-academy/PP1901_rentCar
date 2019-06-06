@@ -20,10 +20,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index()
-//    {
-//        return view('/');
-//    }
 
     public function home()
     {
@@ -33,7 +29,7 @@ class HomeController extends Controller
     }
 
     public function ajax(Request $request){
-        $vehicles = Type::find($request->get('type_id'))->vehicles()->get();
+        $vehicles = Type::find($request->get('id'))->vehicle;
         echo view('ajax',compact('vehicles'));
     }
 }
