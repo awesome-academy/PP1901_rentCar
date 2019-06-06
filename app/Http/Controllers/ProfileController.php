@@ -15,12 +15,12 @@ class ProfileController extends Controller
 
     public function update(Request $request,$id){
         $users = User::find($id);
-        $users -> name = $request -> get('name');
-        $users -> birthday = $request -> get('birthday');
-        $users -> email = $request -> get('email');
-        $users -> address = $request -> get('address');
-        $users -> phone = $request -> get('phone');
-        $users -> card_id = $request -> get('card_id');
+        $users->name = $request->get('name');
+        $users->birthday = $request->get('birthday');
+        $users-> email = $request->get('email');
+        $users->address = $request->get('address');
+        $users->phone = $request->get('phone');
+        $users->card_id = $request->get('card_id');
         $mess = "";
         if ($users->save()){
             $mess = trans('messages.update message');

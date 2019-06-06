@@ -32,6 +32,6 @@ class AdminController extends Controller
 
     public function ajax_user(Request $request){
         $users = user::all();
-        echo view('admin/users_ajax',compact('users'));
+        echo view('admin/users_ajax', compact('users'));
     }
 }

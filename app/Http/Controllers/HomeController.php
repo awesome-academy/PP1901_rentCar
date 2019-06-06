@@ -31,6 +31,6 @@ class HomeController extends Controller
 
     public function ajax(Request $request){
         $vehicles = Type::find($request -> get('id')) -> vehicle;
-        echo view('ajax',compact('vehicles'));
+        echo view('ajax', compact('vehicles'));
     }
 }
