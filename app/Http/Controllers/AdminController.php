@@ -16,4 +16,9 @@ class AdminController extends Controller
         $users = user::all();
         return view('admin.home', compact('rentings','users'));
     }
+
+    public function ajax_user(Request $request){
+        $users = user::all();
+        echo view('admin/users_ajax',compact('users'));
+    }
 }

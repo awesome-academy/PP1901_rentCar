@@ -58,7 +58,7 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="">{{ trans('messages.profile') }}</a>
+                                    <a href="{{ route('editProfile',Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
                                 </li>
                                 @if (Auth::check() && Auth::user()->role_id == 0)
                                <li>
