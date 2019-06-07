@@ -25,4 +25,6 @@ return [
     'remember' => 'Nhớ tài khoản này',
     'profile' => 'Thông tin tài khoản',
     'dashboard' => 'Bảng điều khiển',
+    'update' => 'Cập nhật',
+    'update message' => 'Cập nhật dữ liệu thành công!',
 ];
