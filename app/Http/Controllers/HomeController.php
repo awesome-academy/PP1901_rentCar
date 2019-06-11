@@ -25,11 +25,12 @@ class HomeController extends Controller
     {
         $vehicles = vehicle::all();
         $types = type::all();
+
         return view('welcome', compact('vehicles', 'types'));
     }
 
     public function ajax(Request $request){
-        $vehicles = Type::find($request->get('id'))->vehicle;
+        $vehicles = Type::find($request -> get('id')) -> vehicle;
         echo view('ajax',compact('vehicles'));
     }
 }
