@@ -24,6 +24,8 @@ Route::get('/ajax','HomeController@ajax')->name('ajaxGetVehicle');
 Route::get('/profile/{id}','ProfileController@edit')->name('editProfile');
 Route::post('/profile/{id}','ProfileController@update')->name('updateProfile');
 
-Route::get('/admin/home', 'AdminController@home')->name('home_admin');
+Route::get('/admin/renting', 'AdminController@home_renting')->name('home_renting');
+Route::get('/admin/user', 'AdminController@home_user')->name('home_user');
+Route::get('/admin/vehicle', 'AdminController@home_vehicle')->name('home_vehicle');
 
-Route::get('admin/ajax','AdminController@ajax_user')->name('ajaxGetUser');
+
