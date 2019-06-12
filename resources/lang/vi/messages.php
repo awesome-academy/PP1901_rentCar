@@ -6,6 +6,7 @@ return [
     'login' => 'Đăng nhập',
     'logout' => 'Đăng xuất',
     'register' => 'Đăng kí',
+    'back' => 'Quay lại',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
     'menu' => 'DANH MỤC SẢN PHẨM',
