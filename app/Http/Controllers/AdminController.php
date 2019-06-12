@@ -29,4 +29,9 @@ class AdminController extends Controller
 
         return view('admin.home_vehicle', compact('vehicles'));
     }
+
+    public function ajax_user(Request $request){
+        $users = user::all();
+        echo view('admin/users_ajax', compact('users'));
+    }
 }
