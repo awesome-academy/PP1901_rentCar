@@ -18,10 +18,9 @@
                 </div>
             </div>
             <div class="col-lg-9">
+                <br>
                 <table class="table" id="tb_vehicles">
-                    <br>
                     <a class="btn btn-info" href="">{{ trans('messages.add vehicle') }}</a>
-                    <br>
                     <thead>
                     <tr>
                         <th scope="col">{{ trans('messages.id') }}</th>

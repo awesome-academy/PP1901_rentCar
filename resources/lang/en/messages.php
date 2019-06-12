@@ -6,6 +6,7 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'register' => 'Register',
+    'back' => 'Back',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'menu' => 'MENU',

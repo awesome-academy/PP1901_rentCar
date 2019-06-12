@@ -6,6 +6,9 @@
         <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
     </div>
     <div class="container">
+        @if (session('mess_del'))
+            <p class="allert alert-success">{{ session('mess_del') }}</p>
+        @endif
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>
@@ -20,8 +23,6 @@
             <div class="col-lg-9">
                 <br>
                 <table class="table" id="tb_users">
-                    <a class="btn btn-info" href="">{{ trans('messages.add user') }}</a>
-                    <br>
                     <thead>
                     <tr>
                         <th scope="col">{{ trans('messages.id') }}</th>
@@ -42,9 +43,9 @@
                             <td>{!! $user->created_at !!}</td>
                             <td>{!! $user->updated_at !!}</td>
                             <td>
-                                <a class="btn btn-info" href="">{{ trans('messages.edit') }}</a>
-                                <form action="" method="post">
-                                    <input type="hidden" name="student_id" value="">
+                                <a class="btn btn-info" href="{!! route('editUser',$user->id) !!}">{{ trans('messages.edit') }}</a>
+                                <form action="{!! route('deleteUser') !!}" method="post">
+                                    <input type="hidden" name="user_id" value="{!! $user->id !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <input type="submit" value="{{ trans('messages.delete') }}" class="btn btn-danger">
                                 </form>
