@@ -85,7 +85,7 @@ class AdminController extends Controller
         $users = User::find($request->get('user_id'));
         $users->delete();
 
-        return redirect('/admin/user')->with('mess_del_user', trans('messages.delete user message'));
+        return redirect()->route('home_user')->with('mess_del_user', trans('messages.delete user message'));
     }
 
     public function create_vehicle()
@@ -164,6 +164,6 @@ class AdminController extends Controller
         $vehicles = Vehicle::find($request->get('vehicle_id'));
         $vehicles->delete();
 
-        return redirect('/admin/vehicle')->with('mess_del_vehicle', trans('messages.delete vehicle message'));
+        return redirect()->route('home_vehicle')->with('mess_del_vehicle', trans('messages.delete vehicle message'));
     }
 }

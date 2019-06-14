@@ -14,11 +14,9 @@
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>
                 <div class="list-group">
-                    <a href="{{ route('home_renting')}}" class="list-group-item"
-                       id="renting">{{ trans('messages.renting') }}</a>
-                    <a href="{{ route('home_user')}}" class="list-group-item" id="user">{{ trans('messages.user') }}</a>
-                    <a href="{{ route('home_vehicle')}}" class="list-group-item"
-                       id="vehicle">{{ trans('messages.vehicle') }}</a>
+                    <a href="{{ route('home_renting')}}" class="list-group-item">{{ trans('messages.renting') }}</a>
+                    <a href="{{ route('home_user')}}" class="list-group-item">{{ trans('messages.user') }}</a>
+                    <a href="{{ route('home_vehicle')}}" class="list-group-item">{{ trans('messages.vehicle') }}</a>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -35,7 +33,6 @@
                         <th scope="col">{{ trans('messages.ve_status') }}</th>
                         <th scope="col">{{ trans('messages.price') }}</th>
                         <th scope="col">{{ trans('messages.status') }}</th>
-
                     </tr>
                     </thead>
                     <tbody>
