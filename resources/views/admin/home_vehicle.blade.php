@@ -17,12 +17,37 @@
                     <a href="{{ route('home_renting')}}" class="list-group-item">{{ trans('messages.renting') }}</a>
                     <a href="{{ route('home_user')}}" class="list-group-item">{{ trans('messages.user') }}</a>
                     <a href="{{ route('home_vehicle')}}" class="list-group-item">{{ trans('messages.vehicle') }}</a>
+                    <div class="list-group-item">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">{{ trans('messages.table management') }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">{{ trans('messages.brand table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.type table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.color table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.ve_status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.role table') }}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9">
                 <br>
                 <table class="table" id="tb_vehicles">
-                    <a class="btn btn-info" href="{!! route('createVehicle') !!}">{{ trans('messages.add vehicle') }}</a>
+                    <a class="btn btn-info"
+                       href="{!! route('createVehicle') !!}">{{ trans('messages.add vehicle') }}</a>
                     <thead>
                     <tr>
                         <th scope="col">{{ trans('messages.id') }}</th>
@@ -33,6 +58,7 @@
                         <th scope="col">{{ trans('messages.ve_status') }}</th>
                         <th scope="col">{{ trans('messages.price') }}</th>
                         <th scope="col">{{ trans('messages.status') }}</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -47,7 +73,8 @@
                             <td>{!! $vehicle->price !!}</td>
                             <td>{!! $vehicle->status_id !!}</td>
                             <td>
-                                <a class="btn btn-info" href="{!! route('editVehicle',$vehicle->id) !!}">{{ trans('messages.edit') }}</a>
+                                <a class="btn btn-info"
+                                   href="{!! route('editVehicle',$vehicle->id) !!}">{{ trans('messages.edit') }}</a>
                                 <form action="{!! route('deleteVehicle') !!}" method="post">
                                     <input type="hidden" name="vehicle_id" value="{!! $vehicle->id !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">

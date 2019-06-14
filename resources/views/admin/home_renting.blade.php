@@ -15,6 +15,30 @@
                     <a href="{{ route('home_user')}}" class="list-group-item" id="user">{{ trans('messages.user') }}</a>
                     <a href="{{ route('home_vehicle')}}" class="list-group-item"
                        id="vehicle">{{ trans('messages.vehicle') }}</a>
+                    <div class="list-group-item">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">{{ trans('messages.table management') }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">{{ trans('messages.brand table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.type table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.color table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.ve_status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.role table') }}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9">

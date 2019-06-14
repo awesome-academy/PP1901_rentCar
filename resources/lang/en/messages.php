@@ -52,4 +52,11 @@ return [
     'delete vehicle message' => 'Delete vehicle success!',
     'delete user message' => 'Delete user success!',
     'add vehicle message' => 'Create vehicle success!',
+    'table management' => 'Table management',
+    'brand table' => 'Brand table',
+    'type table' => 'Type table',
+    'color table' => 'Color table',
+    'status table' => 'Status table',
+    've_status table' => 'Vehicle status table',
+    'role table' => 'Role table',
 ];

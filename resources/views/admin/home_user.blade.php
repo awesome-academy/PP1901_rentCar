@@ -14,11 +14,33 @@
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>
                 <div class="list-group">
-                    <a href="{{ route('home_renting')}}" class="list-group-item"
-                       id="renting">{{ trans('messages.renting') }}</a>
-                    <a href="{{ route('home_user')}}" class="list-group-item" id="user">{{ trans('messages.user') }}</a>
-                    <a href="{{ route('home_vehicle')}}" class="list-group-item"
-                       id="vehicle">{{ trans('messages.vehicle') }}</a>
+                    <a href="{{ route('home_renting')}}" class="list-group-item">{{ trans('messages.renting') }}</a>
+                    <a href="{{ route('home_user')}}" class="list-group-item">{{ trans('messages.user') }}</a>
+                    <a href="{{ route('home_vehicle')}}" class="list-group-item">{{ trans('messages.vehicle') }}</a>
+                    <div class="list-group-item">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">{{ trans('messages.table management') }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">{{ trans('messages.brand table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.type table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.color table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.ve_status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.role table') }}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9">
