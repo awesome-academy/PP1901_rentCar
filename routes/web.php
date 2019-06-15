@@ -33,4 +33,14 @@ Route::post('/admin/user/edit/{id}', 'AdminController@update_user')->name('updat
 
 Route::post('/admin/user/delete', 'AdminController@delete_user')->name('deleteUser');
 
+Route::get('/admin/vehicel/edit/{id}','AdminController@edit_vehicle')->name('editVehicle');
+Route::post('/admin/vehicel/edit/{id}','AdminController@update_vehicle')->name('updateVehicle');
+
+Route::get('/admin/vehicel/add','AdminController@create_vehicle')->name('createVehicle');
+Route::post('/admin/vehicel/add','AdminController@store_vehicle')->name('storeVehicle');
+
+
+
+Route::post('/admin/vehicle/delete', 'AdminController@delete_vehicle')->name('deleteVehicle');
+
 

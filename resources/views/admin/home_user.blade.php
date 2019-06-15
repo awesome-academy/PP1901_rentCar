@@ -5,9 +5,10 @@
         <input type="search" name="search">
         <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
     </div>
+    <br>
     <div class="container">
-        @if (session('mess_del'))
-            <p class="allert alert-success">{{ session('mess_del') }}</p>
+        @if (session('mess_del_user'))
+            <p class="allert alert-success">{{ session('mess_del_user') }}</p>
         @endif
         <div class="row">
             <div class="col-lg-3">
@@ -43,7 +44,8 @@
                             <td>{!! $user->created_at !!}</td>
                             <td>{!! $user->updated_at !!}</td>
                             <td>
-                                <a class="btn btn-info" href="{!! route('editUser',$user->id) !!}">{{ trans('messages.edit') }}</a>
+                                <a class="btn btn-info"
+                                   href="{!! route('editUser',$user->id) !!}">{{ trans('messages.edit') }}</a>
                                 <form action="{!! route('deleteUser') !!}" method="post">
                                     <input type="hidden" name="user_id" value="{!! $user->id !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
