@@ -38,7 +38,7 @@ return [
     'remember' => 'Remember Me',
     'profile' => 'Profile',
     'dashboard' => 'Dashboard',
-    'update' => 'Update',
+    'save' => 'Save',
     'update message' => 'Update success!',
     'renting' => 'Reting Info',
     'user' => 'User Info',
@@ -47,4 +47,9 @@ return [
     'add user' => 'Add User',
     'vehicle type' => 'Type',
     'vehicle brand' => 'Brand',
+    'content' => 'Description',
+    'number plate' => 'Number plate',
+    'delete vehicle message' => 'Delete vehicle success!',
+    'delete user message' => 'Delete user success!',
+    'add vehicle message' => 'Create vehicle success!',
 ];

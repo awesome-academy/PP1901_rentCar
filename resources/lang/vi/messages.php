@@ -38,7 +38,7 @@ return [
     'remember' => 'Nhớ tài khoản này',
     'profile' => 'Thông tin tài khoản',
     'dashboard' => 'Bảng điều khiển',
-    'update' => 'Cập nhật',
+    'save' => 'Lưu',
     'update message' => 'Cập nhật dữ liệu thành công!',
     'renting' => 'Thông tin thuê xe',
     'user' => 'Thông tin người dùng',
@@ -47,4 +47,9 @@ return [
     'add user' => 'Thêm người dùng',
     'vehicle type' => 'Loại xe',
     'vehicle brand' => 'Hãng',
+    'content' => 'Mô tả',
+    'number plate' => 'Biển số xe',
+    'delete vehicle message' => 'Xóa thông tin xe thành công !',
+    'delete user message' => 'Xóa thông tin người dùng thành công!',
+    'add vehicle message' => 'Tạo thông tin xe thành công!',
 ];
