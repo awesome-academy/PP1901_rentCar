@@ -85,7 +85,7 @@ class AdminController extends Controller
         $users = User::find($request->get('user_id'));
         $users->delete();
 
-        return redirect()->route('home_user')->with('mess_del_user', trans('messages.delete user message'));
+        return redirect()->route('homeUser')->with('mess_del_user', trans('messages.delete message'));
     }
 
     public function create_vehicle()
@@ -118,7 +118,7 @@ class AdminController extends Controller
         $vehicles->status_id = $request->get('status_id');
         $mess = "";
         if ($vehicles->save()) {
-            $mess = trans('messages.add vehicle message');
+            $mess = trans('messages.add message');
         }
 
         return view('admin.add_vehicle', compact('types', 'brands', 'colors', 've_statuses', 'statuses'))->with('mess', $mess);
@@ -164,6 +164,6 @@ class AdminController extends Controller
         $vehicles = Vehicle::find($request->get('vehicle_id'));
         $vehicles->delete();
 
-        return redirect()->route('home_vehicle')->with('mess_del_vehicle', trans('messages.delete vehicle message'));
+        return redirect()->route('homeVehicle')->with('mess_del_vehicle', trans('messages.delete message'));
     }
 }
