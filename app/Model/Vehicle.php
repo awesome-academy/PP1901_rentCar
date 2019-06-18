@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $table = 'vehicles';
+    protected $guarded = ['id'];
+
     public function brand()
     {
         return $this->belongsTo('App\Model\Brand');

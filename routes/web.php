@@ -40,7 +40,7 @@ Route::post('/admin/user/edit/{id}', 'AdminController@update_user')->name('updat
 
 Route::post('/admin/user/delete', 'AdminController@delete_user')->name('deleteUser');
 
-/*Vegicle page*/
+/*Vehicle page*/
 
 Route::get('/admin/vehicle', 'AdminController@home_vehicle')->name('homeVehicle');
 

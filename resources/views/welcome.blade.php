@@ -30,8 +30,8 @@
                                             <a href="#">{!! $vehicle->name !!}</a>
                                         </h4>
                                         <h5><strong>{{ trans('messages.ve_status') }}
-                                                : </strong>{!! $vehicle->ve_status_id !!}</h5>
-                                        <h5><strong>{{ trans('messages.status') }}: </strong>{!! $vehicle->status_id !!}
+                                                : </strong>{!! $key_ve_status[$vehicle->ve_status_id] !!}</h5>
+                                        <h5><strong>{{ trans('messages.status') }}: </strong>{!! $key_status[$vehicle->status_id] !!}
                                         </h5>
                                         <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle->price !!}
                                             VND/1h</h5>
