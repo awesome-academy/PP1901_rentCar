@@ -36,21 +36,69 @@ class AdminController extends Controller
     {
         $rentings = renting::all();
 
-        return view('admin.home_renting', compact('rentings'));
+        $all_users = User::all()->toArray();
+        $key_user = [];
+        foreach ($all_users as $user) {
+            $key_user[$user['id']] = $user['name'];
+        }
+
+        $all_vehicles = Vehicle::all()->toArray();
+        $key_vehicle = [];
+        foreach ($all_vehicles as $vehicle) {
+            $key_vehicle[$vehicle['id']] = $vehicle['name'];
+        }
+
+        return view('admin.home_renting', compact('rentings', 'key_user', 'key_vehicle'));
     }
 
     public function home_user()
     {
         $users = user::all();
 
-        return view('admin.home_user', compact('users'));
+        $all_roles = Role::all()->toArray();
+        $key_role = [];
+        foreach ($all_roles as $role) {
+            $key_role[$role['id']] = $role['name'];
+        }
+
+        return view('admin.home_user', compact('users', 'key_role'));
     }
 
     public function home_vehicle()
     {
         $vehicles = vehicle::all();
 
-        return view('admin.home_vehicle', compact('vehicles'));
+        $all_types = Type::all()->toArray();
+        $key_type = [];
+        foreach ($all_types as $type) {
+            $key_type[$type['id']] = $type['name'];
+        }
+
+        $all_brands = Brand::all()->toArray();
+        $key_brand = [];
+        foreach ($all_brands as $brand) {
+            $key_brand[$brand['id']] = $brand['name'];
+        }
+
+        $all_colors = Color::all()->toArray();
+        $key_color = [];
+        foreach ($all_colors as $color) {
+            $key_color[$color['id']] = $color['name'];
+        }
+
+        $all_ve_statuses = Ve_status::all()->toArray();
+        $key_ve_status = [];
+        foreach ($all_ve_statuses as $ve_status) {
+            $key_ve_status[$ve_status['id']] = $ve_status['name'];
+        }
+
+        $all_statuses = Status::all()->toArray();
+        $key_status = [];
+        foreach ($all_statuses as $status) {
+            $key_status[$status['id']] = $status['name'];
+        }
+
+        return view('admin.home_vehicle', compact('vehicles', 'key_type', 'key_brand', 'key_color', 'key_ve_status', 'key_status'));
     }
 
     public function edit_user($id)
@@ -58,7 +106,7 @@ class AdminController extends Controller
         $roles = $this->roles;
         $users = User::find($id);
 
-        return view('admin.edit_user', compact('users','roles'));
+        return view('admin.edit_user', compact('users', 'roles'));
     }
 
     public function update_user(Request $request, $id)
@@ -77,7 +125,7 @@ class AdminController extends Controller
             $mess = trans('messages.update message');
         }
 
-        return view('admin.edit_user', compact('users','roles'))->with('mess', $mess);
+        return view('admin.edit_user', compact('users', 'roles'))->with('mess', $mess);
     }
 
     public function delete_user(Request $request)

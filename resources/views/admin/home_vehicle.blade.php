@@ -66,12 +66,12 @@
                         <tr>
                             <th scope="row">{!! $vehicle->id !!}</th>
                             <td>{!! $vehicle->name !!}</td>
-                            <td>{!! $vehicle->type_id !!}</td>
-                            <td>{!! $vehicle->brand_id !!}</td>
-                            <td>{!! $vehicle->color_id !!}</td>
-                            <td>{!! $vehicle->ve_status_id !!}</td>
+                            <td>{!! $key_type[$vehicle->type_id] !!}</td>
+                            <td>{!! $key_brand[$vehicle->brand_id] !!}</td>
+                            <td>{!! $key_color[$vehicle->color_id] !!}</td>
+                            <td>{!! $key_ve_status[$vehicle->ve_status_id] !!}</td>
                             <td>{!! $vehicle->price !!}</td>
-                            <td>{!! $vehicle->status_id !!}</td>
+                            <td>{!! $key_status[$vehicle->status_id] !!}</td>
                             <td>
                                 <a class="btn btn-info"
                                    href="{!! route('editVehicle',$vehicle->id) !!}">{{ trans('messages.edit') }}</a>

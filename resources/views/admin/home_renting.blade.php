@@ -57,8 +57,8 @@
                     @foreach($rentings as $renting)
                         <tr>
                             <th scope="row">{!! $renting->id !!}</th>
-                            <td>{!! $renting->user_id !!}</td>
-                            <td>{!! $renting->vehicle_id !!}</td>
+                            <td>{!! $key_user[$renting->user_id] !!}</td>
+                            <td>{!! $key_vehicle[$renting->vehicle_id] !!}</td>
                             <td>{!! $renting->start_date !!}</td>
                             <td>{!! $renting->end_date !!}</td>
                             <td>100000</td>
