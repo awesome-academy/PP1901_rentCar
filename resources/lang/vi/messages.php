@@ -52,4 +52,11 @@ return [
     'delete vehicle message' => 'Xóa thông tin xe thành công !',
     'delete user message' => 'Xóa thông tin người dùng thành công!',
     'add vehicle message' => 'Tạo thông tin xe thành công!',
+    'table management' => 'Quản lý dữ liêu các bảng',
+    'brand table' => 'Bảng dữ liệu các hãng',
+    'type table' => 'Bảng dữ liêu các loại xe',
+    'color table' => 'Bảng dữ liệu màu sắc',
+    'status table' => 'Bảng dữ liệu các trạng thái',
+    've_status table' => 'Bảng dữ liệu các tình trạng xe',
+    'role table' => 'Bảng dữ liệu các kiểu người dùng',
 ];

@@ -39,8 +39,4 @@ Route::post('/admin/vehicel/edit/{id}','AdminController@update_vehicle')->name('
 Route::get('/admin/vehicel/add','AdminController@create_vehicle')->name('createVehicle');
 Route::post('/admin/vehicel/add','AdminController@store_vehicle')->name('storeVehicle');
 
-
-
 Route::post('/admin/vehicle/delete', 'AdminController@delete_vehicle')->name('deleteVehicle');
-
-
