@@ -5,22 +5,49 @@
         <input type="search" name="search">
         <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
     </div>
+    <br>
     <div class="container">
+        @if (session('mess_del_vehicle'))
+            <p class="allert alert-success">{{ session('mess_del_vehicle') }}</p>
+        @endif
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>
                 <div class="list-group">
-                    <a href="{{ route('home_renting')}}" class="list-group-item"
-                       id="renting">{{ trans('messages.renting') }}</a>
-                    <a href="{{ route('home_user')}}" class="list-group-item" id="user">{{ trans('messages.user') }}</a>
-                    <a href="{{ route('home_vehicle')}}" class="list-group-item"
-                       id="vehicle">{{ trans('messages.vehicle') }}</a>
+                    <a href="{{ route('home_renting')}}" class="list-group-item">{{ trans('messages.renting') }}</a>
+                    <a href="{{ route('home_user')}}" class="list-group-item">{{ trans('messages.user') }}</a>
+                    <a href="{{ route('home_vehicle')}}" class="list-group-item">{{ trans('messages.vehicle') }}</a>
+                    <div class="list-group-item">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">{{ trans('messages.table management') }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">{{ trans('messages.brand table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.type table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.color table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.ve_status table') }}</a>
+                            </li>
+                            <li>
+                                <a href="">{{ trans('messages.role table') }}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9">
                 <br>
                 <table class="table" id="tb_vehicles">
-                    <a class="btn btn-info" href="">{{ trans('messages.add vehicle') }}</a>
+                    <a class="btn btn-info"
+                       href="{!! route('createVehicle') !!}">{{ trans('messages.add vehicle') }}</a>
                     <thead>
                     <tr>
                         <th scope="col">{{ trans('messages.id') }}</th>
@@ -46,9 +73,10 @@
                             <td>{!! $vehicle->price !!}</td>
                             <td>{!! $vehicle->status_id !!}</td>
                             <td>
-                                <a class="btn btn-info" href="">{{ trans('messages.edit') }}</a>
-                                <form action="" method="post">
-                                    <input type="hidden" name="student_id" value="">
+                                <a class="btn btn-info"
+                                   href="{!! route('editVehicle',$vehicle->id) !!}">{{ trans('messages.edit') }}</a>
+                                <form action="{!! route('deleteVehicle') !!}" method="post">
+                                    <input type="hidden" name="vehicle_id" value="{!! $vehicle->id !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <input type="submit" value="{{ trans('messages.delete') }}" class="btn btn-danger">
                                 </form>

@@ -108,9 +108,11 @@
                        class="col-md-4 control-label">{{ trans('messages.role') }}</label>
 
                 <div class="col-md-6">
-                    <input id="role_id" type="text" class="form-control" name="role_id"
-                           value="{!! $users->role_id !!}" required autofocus>
-
+                    <select class="form-control" id="role_id" name="role_id">
+                        @foreach($roles as $role)
+                            <option value="{!! $role->id !!}">{!! $role->name !!}</option>
+                        @endforeach
+                    </select>
                     @if ($errors->has('role_id'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('role_id') }}</strong>
@@ -122,7 +124,7 @@
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">
-                        {{ trans('messages.update') }}
+                        {{ trans('messages.save') }}
                     </button>
                 </div>
             </div>

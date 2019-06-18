@@ -29,8 +29,9 @@ class HomeController extends Controller
         return view('welcome', compact('vehicles', 'types'));
     }
 
-    public function ajax(Request $request){
-        $vehicles = Type::find($request -> get('id')) -> vehicle;
+    public function ajax(Request $request)
+    {
+        $vehicles = Type::find($request->get('id'))->vehicles()->get();
         echo view('ajax', compact('vehicles'));
     }
 }

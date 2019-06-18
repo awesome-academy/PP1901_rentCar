@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     protected $table = 'types';
-    public function vehicle(){
+    public function vehicles(){
         return $this->hasMany('App\Model\Vehicle', 'type_id');
     }
 }
