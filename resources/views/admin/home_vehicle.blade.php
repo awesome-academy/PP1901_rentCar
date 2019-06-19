@@ -64,19 +64,19 @@
                     <tbody>
                     @foreach($vehicles as $vehicle)
                         <tr>
-                            <th scope="row">{!! $vehicle->id !!}</th>
-                            <td>{!! $vehicle->name !!}</td>
-                            <td>{!! $key_type[$vehicle->type_id] !!}</td>
-                            <td>{!! $key_brand[$vehicle->brand_id] !!}</td>
-                            <td>{!! $key_color[$vehicle->color_id] !!}</td>
-                            <td>{!! $key_ve_status[$vehicle->ve_status_id] !!}</td>
-                            <td>{!! $vehicle->price !!}</td>
-                            <td>{!! $key_status[$vehicle->status_id] !!}</td>
+                            <th scope="row">{!! $vehicle['id'] !!}</th>
+                            <td>{!! $vehicle['name'] !!}</td>
+                            <td>{!! $vehicle['type']['name'] !!}</td>
+                            <td>{!! $vehicle['brand']['name'] !!}</td>
+                            <td>{!! $vehicle['color']['name'] !!}</td>
+                            <td>{!! $vehicle['ve_status']['name'] !!}</td>
+                            <td>{!! $vehicle['price'] !!}</td>
+                            <td>{!! $vehicle['status']['name'] !!}</td>
                             <td>
                                 <a class="btn btn-info"
-                                   href="{!! route('editVehicle',$vehicle->id) !!}">{{ trans('messages.edit') }}</a>
+                                   href="{!! route('editVehicle',$vehicle['id']) !!}">{{ trans('messages.edit') }}</a>
                                 <form action="{!! route('deleteVehicle') !!}" method="post">
-                                    <input type="hidden" name="vehicle_id" value="{!! $vehicle->id !!}">
+                                    <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <input type="submit" value="{{ trans('messages.delete') }}" class="btn btn-danger">
                                 </form>

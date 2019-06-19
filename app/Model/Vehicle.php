@@ -34,11 +34,11 @@ class Vehicle extends Model
         return $this->hasMany('App\Model\Rating', 'vehicle_id');
     }
 
-    public function statuses(){
+    public function status(){
         return $this->belongsTo('App\Model\Status');
     }
 
-    public function types(){
+    public function type(){
         return $this->belongsTo('App\Model\Type');
     }
 
@@ -46,7 +46,7 @@ class Vehicle extends Model
         return $this->hasMany('App\Model\Renting', 'vehicle_id');
     }
 
-    public function ve_statuses(){
+    public function ve_status(){
         return $this->belongsTo('App\Model\Ve_status');
     }
 }

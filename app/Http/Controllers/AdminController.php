@@ -34,71 +34,54 @@ class AdminController extends Controller
 
     public function home_renting()
     {
-        $rentings = renting::all();
+        $rentings = renting::with([
+            'user' => function ($query) {
+                $query->select(['users.id', 'users.name']);
+            },
+            'vehicle' => function ($query) {
+                $query->select(['vehicles.id', 'vehicles.name']);
+            }
+        ])->get()->toArray();
 
-        $all_users = User::all()->toArray();
-        $key_user = [];
-        foreach ($all_users as $user) {
-            $key_user[$user['id']] = $user['name'];
-        }
-
-        $all_vehicles = Vehicle::all()->toArray();
-        $key_vehicle = [];
-        foreach ($all_vehicles as $vehicle) {
-            $key_vehicle[$vehicle['id']] = $vehicle['name'];
-        }
-
-        return view('admin.home_renting', compact('rentings', 'key_user', 'key_vehicle'));
+        return view('admin.home_renting', compact('rentings'));
     }
 
     public function home_user()
     {
-        $users = user::all();
+        $users = user::with([
+            'role' => function ($query) {
+                $query->select(['roles.id', 'roles.name']);
+            }
+        ])->get()->toArray();
 
-        $all_roles = Role::all()->toArray();
-        $key_role = [];
-        foreach ($all_roles as $role) {
-            $key_role[$role['id']] = $role['name'];
-        }
-
-        return view('admin.home_user', compact('users', 'key_role'));
+        return view('admin.home_user', compact('users'));
     }
 
     public function home_vehicle()
     {
-        $vehicles = vehicle::all();
+        $vehicles = vehicle::with([
+            'type' => function($query){
+            $query->select(['types.id', 'types.name']);
+            },
 
-        $all_types = Type::all()->toArray();
-        $key_type = [];
-        foreach ($all_types as $type) {
-            $key_type[$type['id']] = $type['name'];
-        }
+            'brand' => function($query){
+            $query->select(['brands.id', 'brands.name']);
+            },
 
-        $all_brands = Brand::all()->toArray();
-        $key_brand = [];
-        foreach ($all_brands as $brand) {
-            $key_brand[$brand['id']] = $brand['name'];
-        }
+            'color' => function($query){
+            $query->select(['colors.id', 'colors.name']);
+            },
 
-        $all_colors = Color::all()->toArray();
-        $key_color = [];
-        foreach ($all_colors as $color) {
-            $key_color[$color['id']] = $color['name'];
-        }
+            've_status' => function($query){
+            $query->select(['ve_statuses.id', 've_statuses.name']);
+            },
 
-        $all_ve_statuses = Ve_status::all()->toArray();
-        $key_ve_status = [];
-        foreach ($all_ve_statuses as $ve_status) {
-            $key_ve_status[$ve_status['id']] = $ve_status['name'];
-        }
+            'status' => function($query){
+            $query->select(['statuses.id', 'statuses.name']);
+            }
+        ])->get()->toArray();
 
-        $all_statuses = Status::all()->toArray();
-        $key_status = [];
-        foreach ($all_statuses as $status) {
-            $key_status[$status['id']] = $status['name'];
-        }
-
-        return view('admin.home_vehicle', compact('vehicles', 'key_type', 'key_brand', 'key_color', 'key_ve_status', 'key_status'));
+        return view('admin.home_vehicle', compact('vehicles'));
     }
 
     public function edit_user($id)
