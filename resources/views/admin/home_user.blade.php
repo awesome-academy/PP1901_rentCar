@@ -59,18 +59,18 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <th scope="row">{!! $user->id !!}</th>
-                            <td>{!! $user->name !!}</td>
-                            <td>{!! $user->email !!}</td>
-                            <td>{!! $key_role[$user->role_id] !!}</td>
-                            <td>{!! $user->created_at !!}</td>
-                            <td>{!! $user->updated_at !!}</td>
+                            <th scope="row">{!! $user['id'] !!}</th>
+                            <td>{!! $user['name'] !!}</td>
+                            <td>{!! $user['email'] !!}</td>
+                            <td>{!! $user['role']['name'] !!}</td>
+                            <td>{!! $user['created_at'] !!}</td>
+                            <td>{!! $user['updated_at'] !!}</td>
                             <td>
                                 <a class="btn btn-info"
-                                   href="{!! route('editUser',$user->id) !!}">{{ trans('messages.edit') }}
+                                   href="{!! route('editUser',$user['id']) !!}">{{ trans('messages.edit') }}
                                 </a>
                                 <form action="{!! route('deleteUser') !!}" method="post">
-                                    <input type="hidden" name="user_id" value="{!! $user->id !!}">
+                                    <input type="hidden" name="user_id" value="{!! $user['id'] !!}">
                                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                     <input type="submit" value="{{ trans('messages.delete') }}" class="btn btn-danger">
                                 </form>
