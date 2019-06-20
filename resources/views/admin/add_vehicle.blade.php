@@ -5,7 +5,6 @@
         <a class="btn btn-info" href="{!! route('homeVehicle') !!}">{{ trans('messages.back') }}</a>
         <form class="form-horizontal" method="POST" action="{{ route('storeVehicle') }}">
             {{ csrf_field() }}
-            <br>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">{{ trans('messages.name') }}</label>
                 <div class="col-md-6">
@@ -62,7 +61,8 @@
                 <label for="content" class="col-md-4 control-label">{{ trans('messages.content') }}</label>
 
                 <div class="col-md-6">
-                    <input id="content" type="text" class="form-control" name="content" value="" required>
+                    <textarea id="content" class="form-control" name="content" required>
+                    </textarea>
                 </div>
             </div>
 

@@ -12,6 +12,7 @@ use App\Model\Color;
 use App\Model\Ve_status;
 use App\Model\Status;
 use App\Model\Role;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -132,11 +133,6 @@ class AdminController extends Controller
 
     public function store_vehicle(Request $request)
     {
-        $types = $this->types;
-        $brands = $this->brands;
-        $colors = $this->colors;
-        $ve_statuses = $this->ve_statuses;
-        $statuses = $this->statuses;
         $vehicles = new Vehicle();
         $vehicles->name = $request->get('name');
         $vehicles->type_id = $request->get('type_id');
@@ -152,7 +148,7 @@ class AdminController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.add_vehicle', compact('types', 'brands', 'colors', 've_statuses', 'statuses'))->with('mess', $mess);
+        return redirect()->route('editVehicle', $vehicles->id)->with('mess', $mess);
     }
 
     public function edit_vehicle($id)
@@ -186,8 +182,9 @@ class AdminController extends Controller
         if ($vehicles->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.edit_vehicle', compact('vehicles', 'types', 'brands', 'colors', 've_statuses', 'statuses'))->with('mess', $mess);
+        return view('admin.edit_vehicle', compact('vehicles', 'types', 'brands', 'colors', 've_statuses', 'statuses'));
     }
 
     public function delete_vehicle(Request $request)

@@ -9,6 +9,7 @@ use App\Model\Color;
 use App\Model\Status;
 use App\Model\Ve_status;
 use App\Model\Role;
+use Illuminate\Support\Facades\Session;
 
 class TableController extends Controller
 {
@@ -37,7 +38,8 @@ class TableController extends Controller
         if ($brands->save()) {
             $mess = trans('messages.add message');
         }
-        return view('admin.table.add_brand', compact('brands'))->with('mess', $mess);
+
+        return redirect()->route('editBrand', $brands->id)->with('mess', $mess);
     }
 
     public function edit_brand($id)
@@ -55,8 +57,8 @@ class TableController extends Controller
         if ($brands->save()) {
             $mess = trans('messages.update message');
         }
-
-        return view('admin.table.edit_brand', compact('brands'))->with('mess', $mess);
+        Session::flash('mess', $mess);
+        return view('admin.table.edit_brand', compact('brands'));
     }
 
     public function delete_brand(Request $request)
@@ -92,7 +94,7 @@ class TableController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.table.add_type', compact('types'))->with('mess', $mess);
+        return redirect()->route('editType', $types->id)->with('mess', $mess);
     }
 
     public function edit_type(Request $request, $id)
@@ -110,8 +112,9 @@ class TableController extends Controller
         if ($types->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.table.edit_type', compact('types'))->with('mess', $mess);
+        return view('admin.table.edit_type', compact('types'));
     }
 
     public function delete_type(Request $request)
@@ -147,7 +150,7 @@ class TableController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.table.add_color', compact('colors'))->with('mess', $mess);
+        return redirect()->route('editColor', $colors->id)->with('mess', $mess);
     }
 
     public function edit_color($id)
@@ -165,8 +168,9 @@ class TableController extends Controller
         if ($colors->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.table.edit_color', compact('colors'))->with('mess', $mess);
+        return view('admin.table.edit_color', compact('colors'));
     }
 
     public function delete_color(Request $request)
@@ -202,7 +206,7 @@ class TableController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.table.add_status', compact('statuses'))->with('mess', $mess);
+        return redirect()->route('editStatus', $statuses->id)->with('mess', $mess);
     }
 
     public function edit_status($id)
@@ -220,8 +224,9 @@ class TableController extends Controller
         if ($statuses->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.table.edit_status', compact('statuses'))->with('mess', $mess);
+        return view('admin.table.edit_status', compact('statuses'));
     }
 
     public function delete_status(Request $request)
@@ -257,7 +262,7 @@ class TableController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.table.add_ve_status', compact('ve_statuses'))->with('mess', $mess);
+        return redirect()->route('editVe_status', $ve_statuses->id)->with('mess', $mess);
     }
 
     public function edit_ve_status($id)
@@ -275,8 +280,9 @@ class TableController extends Controller
         if ($ve_statuses->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.table.edit_ve_status', compact('ve_statuses'))->with('mess', $mess);
+        return view('admin.table.edit_ve_status', compact('ve_statuses'));
     }
 
     public function delete_ve_status(Request $request)
@@ -312,7 +318,7 @@ class TableController extends Controller
             $mess = trans('messages.add message');
         }
 
-        return view('admin.table.add_role', compact('roles'))->with('mess', $mess);
+        return redirect()->route('editRole', $roles->id)->with('mess', $mess);
     }
 
     public function edit_role($id)
@@ -330,8 +336,9 @@ class TableController extends Controller
         if ($roles->save()) {
             $mess = trans('messages.update message');
         }
+        Session::flash('mess', $mess);
 
-        return view('admin.table.edit_role', compact('roles'))->with('mess', $mess);
+        return view('admin.table.edit_role', compact('roles'));
     }
 
     public function delete_role(Request $request)

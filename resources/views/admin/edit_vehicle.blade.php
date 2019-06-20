@@ -7,8 +7,8 @@
             {{ csrf_field() }}
             <br>
             <div>
-                @if(isset($mess))
-                    <p class="alert alert-success">{!! $mess !!}</p>
+                @if(Session::has('mess'))
+                    <p class="alert alert-success">{!! session('mess') !!}</p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -71,8 +71,8 @@
                 <label for="content" class="col-md-4 control-label">{{ trans('messages.content') }}</label>
 
                 <div class="col-md-6">
-                    <input id="content" type="text" class="form-control" name="content"
-                           value="{!! $vehicles->content !!}" required>
+                    <textarea id="content" class="form-control" name="content" required>{!! $vehicles->content !!}
+                    </textarea>
                 </div>
             </div>
 
