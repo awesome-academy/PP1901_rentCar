@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Type;
 use App\Model\Vehicle;
+use App\Model\Color;
+use App\Model\Status;
+use App\Model\Ve_status;
 
 class HomeController extends Controller
 {
@@ -49,5 +53,17 @@ class HomeController extends Controller
             }])->get()->toArray();
 
         return view('ajax', compact('vehicles'));
+    }
+
+    public function vehicle_info($id){
+        $types = Type::all();
+        $brands = Brand::all();
+        $colors = Color::all();
+        $ve_statuses = Ve_status::all();
+        $statuses = Status::all();
+        $vehicles = Vehicle::find($id);
+
+
+        return view('vehicle_info', compact('vehicles', 'types', 'brands', 'colors', 've_statuses', 'statuses'));
     }
 }

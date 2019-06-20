@@ -123,3 +123,7 @@ Route::get('/admin/role/edit/{id}', 'TableController@edit_role')->name('editRole
 Route::post('/admin/role/edit/{id}', 'TableController@update_role')->name('updateRole');
 
 Route::post('/admin/role/delete', 'TableController@delete_role')->name('deleteRole');
+
+/*Vehicle info page*/
+
+Route::get('/vehicle/{id}', 'HomeController@vehicle_info')->name('vehicleInfo');

@@ -27,7 +27,7 @@
                                                      alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="#">{!! $vehicle['name'] !!}</a>
+                                            <a href="{{ route('vehicleInfo', $vehicle['id']) }}">{!! $vehicle['name'] !!}</a>
                                         </h4>
                                         <h5><strong>{{ trans('messages.ve_status') }}
                                                 : </strong>{!! $vehicle['ve_status']['name'] !!}</h5>
