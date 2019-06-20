@@ -1,15 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <a class="btn btn-info" href="{!! route('home_vehicle') !!}">{{ trans('messages.back') }}</a>
+        <h2 style="text-align: center"><strong>{{ trans('messages.vehicle info') }}</strong></h2>
+        <a class="btn btn-info" href="{!! route('homeVehicle') !!}">{{ trans('messages.back') }}</a>
         <form class="form-horizontal" method="POST" action="{{ route('storeVehicle') }}">
             {{ csrf_field() }}
             <br>
-            <div>
-                @if(isset($mess))
-                    <p class="alert alert-success">{!! $mess !!}</p>
-                @endif
-            </div>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">{{ trans('messages.name') }}</label>
                 <div class="col-md-6">

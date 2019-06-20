@@ -34,21 +34,52 @@ class AdminController extends Controller
 
     public function home_renting()
     {
-        $rentings = renting::all();
+        $rentings = renting::with([
+            'user' => function ($query) {
+                $query->select(['users.id', 'users.name']);
+            },
+            'vehicle' => function ($query) {
+                $query->select(['vehicles.id', 'vehicles.name']);
+            }
+        ])->get()->toArray();
 
         return view('admin.home_renting', compact('rentings'));
     }
 
     public function home_user()
     {
-        $users = user::all();
+        $users = user::with([
+            'role' => function ($query) {
+                $query->select(['roles.id', 'roles.name']);
+            }
+        ])->get()->toArray();
 
         return view('admin.home_user', compact('users'));
     }
 
     public function home_vehicle()
     {
-        $vehicles = vehicle::all();
+        $vehicles = vehicle::with([
+            'type' => function($query){
+            $query->select(['types.id', 'types.name']);
+            },
+
+            'brand' => function($query){
+            $query->select(['brands.id', 'brands.name']);
+            },
+
+            'color' => function($query){
+            $query->select(['colors.id', 'colors.name']);
+            },
+
+            've_status' => function($query){
+            $query->select(['ve_statuses.id', 've_statuses.name']);
+            },
+
+            'status' => function($query){
+            $query->select(['statuses.id', 'statuses.name']);
+            }
+        ])->get()->toArray();
 
         return view('admin.home_vehicle', compact('vehicles'));
     }
@@ -58,7 +89,7 @@ class AdminController extends Controller
         $roles = $this->roles;
         $users = User::find($id);
 
-        return view('admin.edit_user', compact('users','roles'));
+        return view('admin.edit_user', compact('users', 'roles'));
     }
 
     public function update_user(Request $request, $id)
@@ -77,7 +108,7 @@ class AdminController extends Controller
             $mess = trans('messages.update message');
         }
 
-        return view('admin.edit_user', compact('users','roles'))->with('mess', $mess);
+        return view('admin.edit_user', compact('users', 'roles'))->with('mess', $mess);
     }
 
     public function delete_user(Request $request)
@@ -85,7 +116,7 @@ class AdminController extends Controller
         $users = User::find($request->get('user_id'));
         $users->delete();
 
-        return redirect()->route('home_user')->with('mess_del_user', trans('messages.delete user message'));
+        return redirect()->route('homeUser')->with('mess_del_user', trans('messages.delete message'));
     }
 
     public function create_vehicle()
@@ -118,7 +149,7 @@ class AdminController extends Controller
         $vehicles->status_id = $request->get('status_id');
         $mess = "";
         if ($vehicles->save()) {
-            $mess = trans('messages.add vehicle message');
+            $mess = trans('messages.add message');
         }
 
         return view('admin.add_vehicle', compact('types', 'brands', 'colors', 've_statuses', 'statuses'))->with('mess', $mess);
@@ -164,6 +195,6 @@ class AdminController extends Controller
         $vehicles = Vehicle::find($request->get('vehicle_id'));
         $vehicles->delete();
 
-        return redirect()->route('home_vehicle')->with('mess_del_vehicle', trans('messages.delete vehicle message'));
+        return redirect()->route('homeVehicle')->with('mess_del_vehicle', trans('messages.delete message'));
     }
 }

@@ -62,7 +62,7 @@
                                 </li>
                                 @if (Auth::check() && Auth::user()->role_id == 0)
                                <li>
-                                   <a href="{{ route('home_renting') }}">{{ trans('messages.dashboard') }}</a>
+                                   <a href="{{ route('homeRenting') }}">{{ trans('messages.dashboard') }}</a>
                                </li>
                                 @endif
                                 <li>

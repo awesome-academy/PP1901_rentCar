@@ -8,13 +8,13 @@
                                      alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">
-                            <a href="#">{!! $vehicle->name !!}</a>
+                            <a href="#">{!! $vehicle['name'] !!}</a>
                         </h4>
                         <h5><strong>{{ trans('messages.ve_status') }}
-                                : </strong>{!! $vehicle->ve_status_id !!}</h5>
-                        <h5><strong>{{ trans('messages.status') }}: </strong>{!! $vehicle->status_id !!}
+                                : </strong>{!! $vehicle['ve_status']['name'] !!}</h5>
+                        <h5><strong>{{ trans('messages.status') }}: </strong>{!! $vehicle['status']['name'] !!}
                         </h5>
-                        <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle->price !!}
+                        <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle['price'] !!}
                             VND/1h</h5>
                         <h5><strong>{{ trans('messages.rating') }}:
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
