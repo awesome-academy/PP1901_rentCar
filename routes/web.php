@@ -124,6 +124,8 @@ Route::post('/admin/role/edit/{id}', 'TableController@update_role')->name('updat
 
 Route::post('/admin/role/delete', 'TableController@delete_role')->name('deleteRole');
 
-/*Vehicle info page*/
+/*Add Cart*/
 
-Route::get('/vehicle/{id}', 'HomeController@vehicle_info')->name('vehicleInfo');
+Route::post('/add cart', 'HomeController@add_cart')->name('addCart');
+Route::get('/checkout', 'HomeController@checkout')->name('checkout');
+

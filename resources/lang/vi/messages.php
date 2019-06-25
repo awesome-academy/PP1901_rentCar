@@ -66,4 +66,6 @@ return [
     'status info' => 'THÔNG TIN VỀ TRẠNG THÁI',
     'vehicle status info' => 'THÔNG TIN VỀ TÌNH TRẠNG XE',
     'role info' => 'THÔNG TIN VỀ KIỂU NGƯỜI DÙNG',
+    'checkout' => 'Thanh toán',
+    'checkout info' => 'THÔNG TIN THANH TOÁN',
 ];

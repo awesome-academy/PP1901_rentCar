@@ -66,4 +66,6 @@ return [
     'status info' => 'STATUS INFORMATION',
     'vehicle status info' => 'VEHICLE STATUS INFORMATION',
     'role info' => 'ROLE INFORMATION',
+    'checkout' => 'Checkout',
+    'checkout info' => 'CHECKOUT INFO',
 ];

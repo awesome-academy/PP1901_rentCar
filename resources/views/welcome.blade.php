@@ -27,7 +27,7 @@
                                                      alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="{{ route('vehicleInfo', $vehicle['id']) }}">{!! $vehicle['name'] !!}</a>
+                                            <a href="#">{!! $vehicle['name'] !!}</a>
                                         </h4>
                                         <h5><strong>{{ trans('messages.ve_status') }}
                                                 : </strong>{!! $vehicle['ve_status']['name'] !!}</h5>
@@ -40,7 +40,11 @@
                                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
                                             </small>
                                         </h5>
-                                        <a class="btn btn-info" href="">{{ trans('messages.book') }}</a>
+                                        <form action="{!! route('addCart') !!}" method="post">
+                                            <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
+                                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
