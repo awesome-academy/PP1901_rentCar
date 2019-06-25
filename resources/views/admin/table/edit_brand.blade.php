@@ -7,8 +7,8 @@
             {{ csrf_field() }}
             <br>
             <div>
-                @if(isset($mess))
-                    <p class="alert alert-success">{!! $mess !!}</p>
+                @if(Session::has('mess'))
+                    <p class="alert alert-success">{!! session('mess') !!}</p>
                 @endif
             </div>
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
