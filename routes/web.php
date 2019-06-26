@@ -123,3 +123,10 @@ Route::get('/admin/role/edit/{id}', 'TableController@edit_role')->name('editRole
 Route::post('/admin/role/edit/{id}', 'TableController@update_role')->name('updateRole');
 
 Route::post('/admin/role/delete', 'TableController@delete_role')->name('deleteRole');
+
+/*Add Cart*/
+
+Route::post('/add cart', 'HomeController@add_cart')->name('addCart');
+Route::get('/checkout', 'HomeController@checkout')->name('checkout');
+Route::post('/checkout/delete', 'HomeController@delete_cart')->name('deleteCart');
+
