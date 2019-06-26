@@ -68,4 +68,6 @@ return [
     'role info' => 'THÔNG TIN VỀ KIỂU NGƯỜI DÙNG',
     'checkout' => 'Thanh toán',
     'checkout info' => 'THÔNG TIN THANH TOÁN',
+    'confirm' => 'Xác nhận thuê xe',
+    'non checkout message' => 'Không có xe nào được chọn!',
 ];

@@ -68,4 +68,6 @@ return [
     'role info' => 'ROLE INFORMATION',
     'checkout' => 'Checkout',
     'checkout info' => 'CHECKOUT INFO',
+    'confirm' => 'Confirm',
+    'non checkout message' => 'Nothing select',
 ];
