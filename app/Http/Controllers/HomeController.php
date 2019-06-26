@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Brand;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Model\Type;
 use App\Model\Vehicle;
-use App\Model\Color;
-use App\Model\Status;
-use App\Model\Ve_status;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
