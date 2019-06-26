@@ -47,14 +47,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @guest
-                        <li><a href="{{ route('login') }}">{{ trans('messages.login') }}</a></li>
-                        <li><a href="{{ route('register') }}">{{ trans('messages.register') }}</a></li>
+                    <li><a href="{{ route('login') }}">{{ trans('messages.login') }}</a></li>
+                    <li><a href="{{ route('register') }}">{{ trans('messages.register') }}</a></li>
                     @else
-                        @if (Auth::check() && Auth::user()->role_id != "null")
-                            <li>
-                                <a href="{{ route('checkout') }}">{{ trans('messages.checkout') }}</a>
-                            </li>
-                        @endif
+                        <li>
+                            <a href="{{ route('checkout') }}">{{ trans('messages.checkout') }}</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false" aria-haspopup="true" v-pre>
@@ -65,9 +63,9 @@
                                     <a href="{{ route('editProfile',Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
                                 </li>
                                 @if (Auth::check() && Auth::user()->role_id == 0)
-                               <li>
-                                   <a href="{{ route('homeRenting') }}">{{ trans('messages.dashboard') }}</a>
-                               </li>
+                                    <li>
+                                        <a href="{{ route('homeRenting') }}">{{ trans('messages.dashboard') }}</a>
+                                    </li>
                                 @endif
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -83,7 +81,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endguest
+                        @endguest
                 </ul>
             </div>
         </div>
