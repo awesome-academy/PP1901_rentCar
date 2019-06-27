@@ -30,6 +30,8 @@ class BookingController extends Controller
         $carts[$id_vehicle]['type'] = $vehicle_info[0]['type']['name'];
         $carts[$id_vehicle]['color'] = $vehicle_info[0]['color']['name'];
         $carts[$id_vehicle]['ve_status'] = $vehicle_info[0]['ve_status']['name'];
+        $carts[$id_vehicle]['startdate'] = '';
+        $carts[$id_vehicle]['endate'] = '';
         $carts[$id_vehicle]['price'] = $vehicle_info[0]['price'];
         Session::put('carts', $carts);
 
@@ -54,5 +56,25 @@ class BookingController extends Controller
         Session::put('carts', $carts);
 
         return redirect()->route('checkout');
+    }
+
+    public function caculator(Request $request){
+        $carts = Session::get('carts');
+
+        $startdate = $request->get('start_date');
+        foreach ($request->post() as $k => $v) {
+            $tem = explode('_',$k);
+            $id = (isset($tem[2]) )? $tem[2] : 0;
+            if ($id == 0) continue;
+            $title = $tem[0] . $tem[1];
+
+            $carts[$id][$title] = $v;
+
+        }
+        Session::put('carts', $carts);
+
+
+        $enddate = $request->get('end_date');
+        $days = ($enddate - $startdate)/(24*60*60);
     }
 }

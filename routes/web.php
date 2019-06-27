@@ -128,5 +128,6 @@ Route::post('/admin/role/delete', 'TableController@delete_role')->name('deleteRo
 
 Route::post('/add cart', 'BookingController@add_cart')->name('addCart');
 Route::get('/checkout', 'BookingController@checkout')->name('checkout');
+Route::post('/checkout', 'BookingController@caculator')->name('caculator');
 Route::post('/checkout/delete', 'BookingController@delete_cart')->name('deleteCart');
 
