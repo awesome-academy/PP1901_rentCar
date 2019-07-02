@@ -17,6 +17,7 @@
                     <th scope="col">{{ trans('messages.start date') }}</th>
                     <th scope="col">{{ trans('messages.end date') }}</th>
                     <th scope="col">{{ trans('messages.price') }}</th>
+                    <th scope="col">{{ trans('messages.total') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,18 +29,18 @@
                         <td>{!! $cart['type'] !!}</td>
                         <td>{!! $cart['color'] !!}</td>
                         <td>{!! $cart['ve_status'] !!}</td>
-                        <td><input type="date" class="form-control"  value="{{ $cart['startdate'] }}" name="start_date_{!! $cart['id'] !!}"></td>
-                        <td><input type="date" class="form-control" value="{{ $cart['enddate'] }}" name="end_date_{!! $cart['id'] !!}"></td>
+                        <td><input type="date" class="form-control" value="{{ $cart['startdate'] }}"
+                                   name="start_date_{!! $cart['id'] !!}"></td>
+                        <td><input type="date" class="form-control" value="{{ $cart['enddate'] }}"
+                                   name="end_date_{!! $cart['id'] !!}"></td>
                         <td>{!! $cart['price'] !!} VND</td>
+                        <td>{!! $cart['total'] !!} VND</td>
                         <td>
-                            <form action="{!! route('deleteCart') !!}" method="post">
-                                <input type="hidden" name="cart_id" value="{!! $cart['id'] !!}">
-                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                <input type="submit" value="{{ trans('messages.delete') }}" class="btn btn-danger">
-                            </form>
+                            <a href="javascript:;" class="btn btn-danger deleteCart"
+                               id="{!! $cart['id'] !!}">{!! trans('messages.delete') !!}</a>
                         </td>
                     </tr>
-                    @php($total += $cart['price'])
+                    @php($total += $cart['total'])
                 @endforeach
                 </tbody>
             </table>
@@ -52,4 +53,24 @@
         </form>
     </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.deleteCart').click(function () {
+                var id_cart = $(this).attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: "/checkout/delete/" + id_cart,
+                    data: {
+                        "id": id_cart,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "html",
+                    success: function () {
+                        window.location.reload();
+                    }
+                });
+            });
+        })
+    </script>
 @endsection
