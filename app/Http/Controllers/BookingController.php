@@ -30,7 +30,10 @@ class BookingController extends Controller
         $carts[$id_vehicle]['type'] = $vehicle_info[0]['type']['name'];
         $carts[$id_vehicle]['color'] = $vehicle_info[0]['color']['name'];
         $carts[$id_vehicle]['ve_status'] = $vehicle_info[0]['ve_status']['name'];
+        $carts[$id_vehicle]['startdate'] = '';
+        $carts[$id_vehicle]['enddate'] = '';
         $carts[$id_vehicle]['price'] = $vehicle_info[0]['price'];
+        $carts[$id_vehicle]['total'] = '';
         Session::put('carts', $carts);
 
         return redirect()->back();
@@ -47,12 +50,31 @@ class BookingController extends Controller
             return view('member/non_checkout');
     }
 
-    public function delete_cart(Request $request)
+    public function caculator(Request $request)
     {
         $carts = Session::get('carts');
-        unset($carts[$request->get('cart_id')]);
+        foreach ($request->post() as $k => $v) {
+            $tem = explode('_', $k);
+            $id = (isset($tem[2])) ? $tem[2] : 0;
+            if ($id == 0) continue;
+            $title = $tem[0] . $tem[1];
+            $carts[$id][$title] = $v;
+            if (isset($carts[$id]['enddate'])) {
+                $total = (strtotime($carts[$id]['enddate']) - strtotime($carts[$id]['startdate'])) / (24 * 60 * 60);
+                $carts[$id]['total'] = $total * $carts[$id]['price'];
+            }
+        }
         Session::put('carts', $carts);
 
         return redirect()->route('checkout');
+    }
+
+    public function delete_cart(Request $request)
+    {
+        $carts = Session::get('carts');
+        unset($carts[$request->get('id')]);
+        Session::put('carts', $carts);
+
+        echo $request->get('id');
     }
 }

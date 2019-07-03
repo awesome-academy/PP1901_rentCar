@@ -35,7 +35,7 @@
                                                 : </strong>{!! $vehicle['status']['name'] !!}
                                         </h5>
                                         <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle['price'] !!}
-                                            VND/1h</h5>
+                                            VND/1 day</h5>
                                         <h5><strong>{{ trans('messages.rating') }}:</strong>
                                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
                                             </small>
