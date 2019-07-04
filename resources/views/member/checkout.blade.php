@@ -48,10 +48,7 @@
             <input type="submit" value="{{ trans('messages.save') }}" class="btn btn-info">
         </form>
         <h3><strong>{{ trans('messages.total') }}: </strong>{{ $total }} VND</h3>
-        <form action="" method="post">
-            <input type="submit" value="{{ trans('messages.confirm') }}" class="btn btn-info">
-        </form>
-    </div>
+        <a class="btn btn-info" href="{!! route('storeCart') !!}">{{ trans('messages.confirm') }}</a>
     </div>
 
     <script>
