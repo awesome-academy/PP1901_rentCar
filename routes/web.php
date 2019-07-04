@@ -124,9 +124,11 @@ Route::post('/admin/role/edit/{id}', 'TableController@update_role')->name('updat
 
 Route::post('/admin/role/delete', 'TableController@delete_role')->name('deleteRole');
 
-/*Add Cart*/
+/*Cart page*/
 
-Route::post('/add cart', 'HomeController@add_cart')->name('addCart');
-Route::get('/checkout', 'HomeController@checkout')->name('checkout');
-Route::post('/checkout/delete', 'HomeController@delete_cart')->name('deleteCart');
+Route::post('/add cart', 'BookingController@add_cart')->name('addCart');
+Route::get('/checkout', 'BookingController@checkout')->name('checkout');
+Route::post('/checkout', 'BookingController@caculator')->name('caculator');
+Route::post('/checkout/delete/{id}', 'BookingController@delete_cart')->name('deleteCart');
+Route::get('/checkout/confirm', 'BookingController@store_cart')->name('storeCart');
 

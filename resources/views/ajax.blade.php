@@ -15,11 +15,15 @@
                         <h5><strong>{{ trans('messages.status') }}: </strong>{!! $vehicle['status']['name'] !!}
                         </h5>
                         <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle['price'] !!}
-                            VND/1h</h5>
+                            VND/1 day</h5>
                         <h5><strong>{{ trans('messages.rating') }}:
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
                                 </small></h5>
-                        <a class="btn btn-info" href="">{{ trans('messages.book') }}</a>
+                        <form action="{!! route('addCart') !!}" method="post">
+                            <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
+                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
+                        </form>
                     </div>
                 </div>
             </div>

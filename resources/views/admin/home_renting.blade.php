@@ -61,7 +61,7 @@
                             <td>{!! $renting['vehicle']['name'] !!}</td>
                             <td>{!! $renting['start_date'] !!}</td>
                             <td>{!! $renting['end_date'] !!}</td>
-                            <td>100000</td>
+                            <td>{!! $renting['total'] !!}</td>
                             <td>{!! $renting['created_at'] !!}</td>
                         </tr>
                     @endforeach
