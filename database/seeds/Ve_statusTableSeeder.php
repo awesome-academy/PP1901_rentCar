@@ -12,8 +12,8 @@ class Ve_statusTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<3;$i++){
-            DB::table('ve_status')->insert(
+        for ($i=0; $i<3; $i++){
+            DB::table('ve_statuses')->insert(
               [
                   'name'=>Str::random(10),
                   'created_at'=>date('Y-m-d H-i-s'),

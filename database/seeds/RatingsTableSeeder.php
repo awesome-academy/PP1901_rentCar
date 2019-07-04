@@ -12,11 +12,11 @@ class RatingsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<=6;$i++){
+        for ($i=0; $i<=6; $i++){
             DB::table('ratings')->insert(
               [
-                  'vehicle_id'=>rand(0,5),
-                  'star'=>rand(1,5),
+                  'vehicle_id'=>rand(0, 5),
+                  'star'=>rand(1, 5),
                   'created_at'=>date('Y-m-d H-i-s'),
                   'updated_at'=>date('Y-m-d H-i-s'),
               ]

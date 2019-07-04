@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Model\Vehicle;
+use App\Model\Renting;
 
 class BookingController extends Controller
 {
@@ -76,5 +78,27 @@ class BookingController extends Controller
         Session::put('carts', $carts);
 
         echo $request->get('id');
+    }
+
+    public function store_cart(Request $request)
+    {
+        $carts = Session::get('carts');
+        $data = [];
+        foreach ($carts as $cart) {
+            $pre_insert = array(
+                'user_id' => Auth::user()->id,
+                'vehicle_id' => $cart['id'],
+                'start_date' => $cart['startdate'],
+                'end_date' => $cart['enddate'],
+                'total' => $cart['total'],
+                'created_at' => date('Y-m-d H-i-s'),
+                'updated_at' => date('Y-m-d H-i-s'),
+            );
+            $data[] = $pre_insert;
+        }
+        Renting::insert($data);
+        $rentings = Renting::all();
+
+        return view('member/confirm', compact('rentings'));
     }
 }

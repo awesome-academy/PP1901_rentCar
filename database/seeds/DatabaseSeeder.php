@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ImagesTableSeeder::class);
          $this->call(RatingsTableSeeder::class);
          $this->call(RentingsTableSeeder::class);
-         $this->call(TypesTableSeeder::class);
-         $this->call(RolesTableSeeder::class);
          $this->call(VehiclesTableSeeder::class);
          $this->call(Ve_statusTableSeeder::class);
     }
