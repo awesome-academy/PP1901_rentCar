@@ -130,5 +130,6 @@ Route::post('/add cart', 'BookingController@add_cart')->name('addCart');
 Route::get('/checkout', 'BookingController@checkout')->name('checkout');
 Route::post('/checkout', 'BookingController@caculator')->name('caculator');
 Route::post('/checkout/delete/{id}', 'BookingController@delete_cart')->name('deleteCart');
-Route::get('/checkout/confirm', 'BookingController@store_cart')->name('storeCart');
+Route::get('/checkout/confirm', 'BookingController@confirm')->name('confirm');
+Route::get('/checkout/successfully', 'BookingController@store_cart')->name('storeCart');
 

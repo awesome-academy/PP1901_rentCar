@@ -25,6 +25,7 @@ return [
     'start date' => 'Start date',
     'end date' => 'End date',
     'total' => 'Total',
+    'money' => 'Money',
     'created at' => 'Created at',
     'updated at' => 'Updated at',
     'email' => 'E-Mail Address',
@@ -71,4 +72,6 @@ return [
     'confirm' => 'Confirm',
     'non checkout message' => 'Nothing select',
     'confirm info' => 'CONFIRM INFO',
+    'confirm renting' => 'Confirm Renting',
+    'access message' => 'Congratulations on successfully renting!',
 ];
