@@ -25,6 +25,7 @@ return [
     'start date' => 'Ngày bắt đầu thuê',
     'end date' => 'Ngày kết thúc thuê',
     'total' => 'Tổng tiền',
+    'money' => 'Thành tiền',
     'created at' => 'Ngày tạo',
     'updated at' => 'Ngày cập nhật',
     'email' => 'Email',
@@ -68,7 +69,9 @@ return [
     'role info' => 'THÔNG TIN VỀ KIỂU NGƯỜI DÙNG',
     'checkout' => 'Thanh toán',
     'checkout info' => 'THÔNG TIN THANH TOÁN',
-    'confirm' => 'Xác nhận thuê xe',
+    'confirm' => 'Xác nhận thông tin',
     'non checkout message' => 'Không có xe nào được chọn!',
     'confirm info' => 'XÁC NHẬN THÔNG TIN',
+    'confirm renting' => 'Xác nhận thuê xe',
+    'access message' => 'Chúc mừng bạn đã thuê xe thành công!',
 ];
