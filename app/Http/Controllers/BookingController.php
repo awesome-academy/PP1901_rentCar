@@ -121,7 +121,7 @@ class BookingController extends Controller
             'vehicle' => function ($query) {
                 $query->select(['vehicles.id', 'vehicles.name']);
             }
-        ])->get()->toArray();
+        ])->paginate(8);
         if ($rentings) {
 
             return view('member/renting_info', compact('rentings'));

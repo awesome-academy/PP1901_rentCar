@@ -30,6 +30,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $rentings->links() }}
         </div>
     </div>
 @endsection

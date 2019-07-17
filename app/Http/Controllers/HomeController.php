@@ -31,7 +31,7 @@ class HomeController extends Controller
             've_status' => function ($query) {
                 $query->select(['ve_statuses.id', 've_statuses.name']);
             }
-        ])->get()->toArray();
+        ])->paginate(5);
 
         return view('welcome', compact('vehicles', 'types'));
     }

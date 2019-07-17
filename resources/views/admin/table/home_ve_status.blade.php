@@ -76,6 +76,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $ve_statuses->links() }}
             </div>
         </div>
     </div>
