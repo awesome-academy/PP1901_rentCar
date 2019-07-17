@@ -74,4 +74,5 @@ return [
     'confirm info' => 'XÁC NHẬN THÔNG TIN',
     'confirm renting' => 'Xác nhận thuê xe',
     'access message' => 'Chúc mừng bạn đã thuê xe thành công!',
+    'non renting message' => 'Không có xe nào được thuê!',
 ];

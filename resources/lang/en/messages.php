@@ -70,8 +70,9 @@ return [
     'checkout' => 'Checkout',
     'checkout info' => 'CHECKOUT INFO',
     'confirm' => 'Confirm',
-    'non checkout message' => 'Nothing select',
+    'non checkout message' => 'Nothing select!',
     'confirm info' => 'CONFIRM INFO',
     'confirm renting' => 'Confirm Renting',
     'access message' => 'Congratulations on successfully renting!',
+    'non renting message' => 'Nothing renting!',
 ];

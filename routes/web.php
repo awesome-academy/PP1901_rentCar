@@ -132,4 +132,5 @@ Route::post('/checkout', 'BookingController@caculator')->name('caculator');
 Route::post('/checkout/delete/{id}', 'BookingController@delete_cart')->name('deleteCart');
 Route::get('/checkout/confirm', 'BookingController@confirm')->name('confirm');
 Route::get('/checkout/successfully', 'BookingController@store_cart')->name('storeCart');
+Route::get('/renting info', 'BookingController@renting_info')->name('rentingInfo');
 
