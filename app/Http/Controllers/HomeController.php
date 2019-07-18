@@ -31,8 +31,7 @@ class HomeController extends Controller
             've_status' => function ($query) {
                 $query->select(['ve_statuses.id', 've_statuses.name']);
             }
-        ])->get()->toArray();
-
+        ])->paginate(6);
         return view('welcome', compact('vehicles', 'types'));
     }
 
@@ -45,8 +44,34 @@ class HomeController extends Controller
 
             've_status' => function ($query) {
                 $query->select(['ve_statuses.id', 've_statuses.name']);
-            }])->get()->toArray();
+            }])->paginate(6);
 
         return view('ajax', compact('vehicles'));
+    }
+
+    public function vehicle_detail($id){
+        $vehicles = Vehicle::with([
+            'type' => function($query){
+                $query->select(['types.id', 'types.name']);
+            },
+
+            'brand' => function($query){
+                $query->select(['brands.id', 'brands.name']);
+            },
+
+            'color' => function($query){
+                $query->select(['colors.id', 'colors.name']);
+            },
+
+            've_status' => function($query){
+                $query->select(['ve_statuses.id', 've_statuses.name']);
+            },
+
+            'status' => function($query){
+                $query->select(['statuses.id', 'statuses.name']);
+            }
+        ])->find($id);
+
+        return view('vehicle_detail', compact('vehicles'));
     }
 }

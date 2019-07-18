@@ -4,6 +4,6 @@
     <div class="container">
         <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
         <br>
-        <h4 style="text-align: center"><strong>{{ trans('messages.non checkout message') }}</strong></h4>
+        <h4 style="text-align: center"><strong>{{ trans('messages.non renting message') }}</strong></h4>
     </div>
 @endsection

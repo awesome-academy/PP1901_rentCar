@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
         <form class="form-horizontal" method="POST" action="{{ route('updateProfile',Auth::user()->id) }}">
             {{ csrf_field() }}
             <div>
@@ -75,7 +76,7 @@
                 <label for="phone" class="col-md-4 control-label">{{ trans('messages.phone') }}</label>
 
                 <div class="col-md-6">
-                    <input id="phone" type="text" class="form-control" name="phone"
+                    <input id="phone" type="tel" class="form-control" name="phone"
                            value="{!! $users->phone !!}" required autofocus>
 
                     @if ($errors->has('phone'))

@@ -62,6 +62,9 @@
                                 <li>
                                     <a href="{{ route('editProfile',Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('rentingInfo') }}">{{ trans('messages.renting') }}</a>
+                                </li>
                                 @if (Auth::check() && Auth::user()->role_id == 0)
                                     <li>
                                         <a href="{{ route('homeRenting') }}">{{ trans('messages.dashboard') }}</a>
