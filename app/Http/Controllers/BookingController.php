@@ -104,10 +104,12 @@ class BookingController extends Controller
                 'updated_at' => date('Y-m-d H-i-s'),
             );
             $data[] = $pre_insert;
+            $vehicles = Vehicle::find($pre_insert['vehicle_id']);
+            $vehicles->status_id = 2;
+            $vehicles->save();
         }
         Renting::insert($data);
         $request->session()->forget('carts');
-
         return view('member/successfully');
     }
 
