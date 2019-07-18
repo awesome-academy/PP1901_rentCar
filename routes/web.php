@@ -134,3 +134,5 @@ Route::get('/checkout/confirm', 'BookingController@confirm')->name('confirm');
 Route::get('/checkout/successfully', 'BookingController@store_cart')->name('storeCart');
 Route::get('/renting info', 'BookingController@renting_info')->name('rentingInfo');
 
+/*Vehicle detail page*/
+Route::get('/vehicle/{id}', 'HomeController@vehicle_detail')->name('vehicleDetail');

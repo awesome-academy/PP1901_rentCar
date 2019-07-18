@@ -2,10 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <input type="search" name="search">
-        <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
-    </div>
-    <div class="container">
+        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>

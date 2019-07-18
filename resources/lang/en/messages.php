@@ -12,7 +12,7 @@ return [
     'delete' => 'Delete',
     'menu' => 'MENU',
     'menu admin' => 'MENU',
-    'price' => 'Price',
+    'price' => 'Price (1 day)',
     've_status' => 'Vehicle status',
     'status' => 'Status',
     'rating' => 'Rating',
@@ -75,4 +75,5 @@ return [
     'confirm renting' => 'Confirm Renting',
     'access message' => 'Congratulations on successfully renting!',
     'non renting message' => 'Nothing renting!',
+    'search placeholder' => 'Enter the content to search....',
 ];

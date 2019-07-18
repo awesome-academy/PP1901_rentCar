@@ -12,7 +12,7 @@ return [
     'delete' => 'Xóa',
     'menu' => 'DANH MỤC SẢN PHẨM',
     'menu admin' => 'DANH MỤC QUẢN LÝ',
-    'price' => 'Giá thuê',
+    'price' => 'Giá thuê (1 ngày)',
     've_status' => 'Tình trạng xe',
     'status' => 'Trạng thái',
     'rating' => 'Đánh giá',
@@ -75,4 +75,5 @@ return [
     'confirm renting' => 'Xác nhận thuê xe',
     'access message' => 'Chúc mừng bạn đã thuê xe thành công!',
     'non renting message' => 'Không có xe nào được thuê!',
+    'search placeholder' => 'Nhập nội dung cần tìm kiếm....',
 ];
