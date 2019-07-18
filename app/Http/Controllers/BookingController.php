@@ -110,4 +110,23 @@ class BookingController extends Controller
 
         return view('member/successfully');
     }
+
+    public function renting_info()
+    {
+        $users = Auth::user();
+        $rentings = Renting::where('user_id', '=', $users['id'])->with([
+            'user' => function ($query) {
+                $query->select(['users.id', 'users.name']);
+            },
+            'vehicle' => function ($query) {
+                $query->select(['vehicles.id', 'vehicles.name']);
+            }
+        ])->paginate(8);
+        if ($rentings) {
+
+            return view('member/renting_info', compact('rentings'));
+        } else
+
+            return view('member/non_renting');
+    }
 }

@@ -2,11 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <input type="search" name="search">
-        <input class="btn btn-success" type="submit" value="{{ trans('messages.search') }}">
-    </div>
-    <br>
-    <div class="container">
+        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
         @if (session('mess_del_user'))
             <p class="allert alert-success">{{ session('mess_del_user') }}</p>
         @endif
@@ -79,6 +75,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $users->links() }}
             </div>
         </div>
     </div>
