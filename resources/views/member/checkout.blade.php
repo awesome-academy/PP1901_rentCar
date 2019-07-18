@@ -17,7 +17,7 @@
                     <th scope="col">{{ trans('messages.start date') }}</th>
                     <th scope="col">{{ trans('messages.end date') }}</th>
                     <th scope="col">{{ trans('messages.price') }}</th>
-                    <th scope="col">{{ trans('messages.total') }}</th>
+                    <th scope="col">{{ trans('messages.money') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
             <input type="submit" value="{{ trans('messages.save') }}" class="btn btn-info">
         </form>
         <h3><strong>{{ trans('messages.total') }}: </strong>{{ $total }} VND</h3>
-        <a class="btn btn-info" href="{!! route('storeCart') !!}">{{ trans('messages.confirm') }}</a>
+        <a class="btn btn-info" href="{!! route('confirm') !!}">{{ trans('messages.confirm') }}</a>
     </div>
 
     <script>

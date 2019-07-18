@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -80,6 +81,14 @@ class BookingController extends Controller
         echo $request->get('id');
     }
 
+    public function confirm()
+    {
+        $user = Auth::user();
+        $carts = Session::get('carts');
+
+        return view('member/confirm', compact('carts', 'user'));
+    }
+
     public function store_cart(Request $request)
     {
         $carts = Session::get('carts');
@@ -97,8 +106,27 @@ class BookingController extends Controller
             $data[] = $pre_insert;
         }
         Renting::insert($data);
-        $rentings = Renting::all();
+        $request->session()->forget('carts');
 
-        return view('member/confirm', compact('rentings'));
+        return view('member/successfully');
+    }
+
+    public function renting_info()
+    {
+        $users = Auth::user();
+        $rentings = Renting::where('user_id', '=', $users['id'])->with([
+            'user' => function ($query) {
+                $query->select(['users.id', 'users.name']);
+            },
+            'vehicle' => function ($query) {
+                $query->select(['vehicles.id', 'vehicles.name']);
+            }
+        ])->paginate(8);
+        if ($rentings) {
+
+            return view('member/renting_info', compact('rentings'));
+        } else
+
+            return view('member/non_renting');
     }
 }

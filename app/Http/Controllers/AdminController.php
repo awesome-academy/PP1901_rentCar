@@ -42,7 +42,7 @@ class AdminController extends Controller
             'vehicle' => function ($query) {
                 $query->select(['vehicles.id', 'vehicles.name']);
             }
-        ])->get()->toArray();
+        ])->paginate(8);
 
         return view('admin.home_renting', compact('rentings'));
     }
@@ -53,7 +53,7 @@ class AdminController extends Controller
             'role' => function ($query) {
                 $query->select(['roles.id', 'roles.name']);
             }
-        ])->get()->toArray();
+        ])->paginate(8);
 
         return view('admin.home_user', compact('users'));
     }
@@ -80,7 +80,7 @@ class AdminController extends Controller
             'status' => function($query){
             $query->select(['statuses.id', 'statuses.name']);
             }
-        ])->get()->toArray();
+        ])->paginate(8);
 
         return view('admin.home_vehicle', compact('vehicles'));
     }

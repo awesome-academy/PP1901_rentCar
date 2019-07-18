@@ -43,13 +43,15 @@
                                         <form action="{!! route('addCart') !!}" method="post">
                                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
+                                            <input type="submit" value="{{ trans('messages.book') }}"
+                                                   class="btn btn-info">
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+                    {{ $vehicles->links() }}
                 </div>
             </div>
         </div>
