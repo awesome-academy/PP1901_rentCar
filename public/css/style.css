@@ -6,3 +6,9 @@ img {
 #card {
     margin-bottom: 30px;
 }
+
+.image {
+    border-radius: 8px;
+    height: 250px;
+    width: 250px;
+}

@@ -18,7 +18,7 @@ class TableController extends Controller
 
     public function home_brand()
     {
-        $brands = Brand::all();
+        $brands = Brand::paginate(5);
 
         return view('admin.table.home_brand', compact('brands'));
     }
@@ -73,7 +73,7 @@ class TableController extends Controller
 
     public function home_type()
     {
-        $types = Type::all();
+        $types = Type::paginate(5);
 
         return view('admin.table.home_type', compact('types'));
     }
@@ -129,7 +129,7 @@ class TableController extends Controller
 
     public function home_color()
     {
-        $colors = Color::all();
+        $colors = Color::paginate(5);
 
         return view('admin.table.home_color', compact('colors'));
     }
@@ -185,7 +185,7 @@ class TableController extends Controller
 
     public function home_status()
     {
-        $statuses = Status::all();
+        $statuses = Status::paginate(5);
 
         return view('admin.table.home_status', compact('statuses'));
     }
@@ -241,7 +241,7 @@ class TableController extends Controller
 
     public function home_ve_status()
     {
-        $ve_statuses = Ve_status::all();
+        $ve_statuses = Ve_status::paginate(5);
 
         return view('admin.table.home_ve_status', compact('ve_statuses'));
     }
@@ -297,7 +297,7 @@ class TableController extends Controller
 
     public function home_role()
     {
-        $roles = Role::all();
+        $roles = Role::paginate(5);
 
         return view('admin.table.home_role', compact('roles'));
     }
