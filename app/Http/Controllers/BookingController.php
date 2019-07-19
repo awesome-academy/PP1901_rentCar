@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Model\Vehicle;
 use App\Model\Renting;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -108,6 +109,23 @@ class BookingController extends Controller
         Renting::insert($data);
         $request->session()->forget('carts');
 
+        $rentings = Renting::all();
+        $vehicles = Vehicle::all();
+        $date = Carbon::now()->toDateTimeString();
+        foreach ($rentings as $renting) {
+            foreach ($vehicles as $vehicle) {
+                if (($vehicle['id'] == $renting['vehicle_id'])  && ($renting['end_date'] > $date)) {
+                    $value = 2;
+                } else {
+                    $value = 1;
+                };
+                $vehicles = Vehicle::find($renting['vehicle_id']);
+                if ($vehicles) {
+                    $vehicles->status_id = $value;
+                    $vehicles->save();
+                }
+            }
+        }
         return view('member/successfully');
     }
 
