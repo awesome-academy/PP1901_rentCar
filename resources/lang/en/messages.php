@@ -76,4 +76,6 @@ return [
     'access message' => 'Congratulations on successfully renting!',
     'non renting message' => 'Nothing renting!',
     'search placeholder' => 'Enter the content to search....',
+    'rented' => 'Rented',
+    'search result' => 'Search result: ',
 ];
