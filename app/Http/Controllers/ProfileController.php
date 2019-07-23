@@ -21,6 +21,16 @@ class ProfileController extends Controller
         $users->address = $request->get('address');
         $users->phone = $request->get('phone');
         $users->card_id = $request->get('card_id');
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'address' => 'required|string|min:6',
+            'phone' => 'required|numeric|min:10',
+            'card_id' => 'required|numeric|min:9',
+            'birthday' => 'required|date',
+        ]);
+
         $mess = "";
         if ($users->save()){
             $mess = trans('messages.update message');

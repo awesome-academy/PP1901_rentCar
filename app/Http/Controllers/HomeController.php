@@ -74,4 +74,12 @@ class HomeController extends Controller
 
         return view('vehicle_detail', compact('vehicles'));
     }
+
+    public function searchInfo(Request $request){
+        $vehicles = Vehicle::where('name', 'like', '%'.$request->key.'%')
+            ->orWhere('price', 'like', '%'.$request->key.'%')
+            ->paginate(6);
+
+        return view('search', compact('vehicles'));
+    }
 }
