@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -44,16 +45,6 @@ class BookingController extends Controller
 
             return view('auth/login');
     }
-//
-//    public function countCart(){
-//        $carts = Session::get('carts');
-//        $count = 0;
-//        if (Session::has('carts')){
-//            $count = count($carts);
-//        }
-//
-//        return view('layouts/app', compact('count'));
-//    }
 
     public function checkout()
     {
@@ -82,6 +73,7 @@ class BookingController extends Controller
         }
         Session::put('carts', $carts);
 
+
         return redirect()->route('checkout');
     }
 
@@ -97,9 +89,24 @@ class BookingController extends Controller
     public function confirm()
     {
         $user = Auth::user();
+        $now = Carbon::now()->toDateString();
         $carts = Session::get('carts');
+        foreach ($carts as $cart) {
+            if (isset($cart['startdate']) && isset($cart['enddate'])) {
+                if ($cart['startdate'] < $now || $cart['enddate'] < $cart['startdate']) {
+                    Session::flash('message1', "Please input date again!");
 
-        return view('member/confirm', compact('carts', 'user'));
+                    return redirect()->back();
+                } else {
+
+                    return view('member/confirm', compact('carts', 'user'));
+                }
+            } else {
+                Session::flash('message2', "Start date, end date not empty!");
+
+                return redirect()->back();
+            }
+        }
     }
 
     public function store_cart(Request $request)
@@ -121,6 +128,7 @@ class BookingController extends Controller
             $vehicles->status_id = 2;
             $vehicles->save();
         }
+
         Renting::insert($data);
         $request->session()->forget('carts');
 
