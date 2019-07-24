@@ -49,29 +49,40 @@ class HomeController extends Controller
         return view('ajax', compact('vehicles'));
     }
 
-    public function vehicle_detail($id){
+    public function vehicle_detail($id)
+    {
         $vehicles = Vehicle::with([
-            'type' => function($query){
+            'type' => function ($query) {
                 $query->select(['types.id', 'types.name']);
             },
 
-            'brand' => function($query){
+            'brand' => function ($query) {
                 $query->select(['brands.id', 'brands.name']);
             },
 
-            'color' => function($query){
+            'color' => function ($query) {
                 $query->select(['colors.id', 'colors.name']);
             },
 
-            've_status' => function($query){
+            've_status' => function ($query) {
                 $query->select(['ve_statuses.id', 've_statuses.name']);
             },
 
-            'status' => function($query){
+            'status' => function ($query) {
                 $query->select(['statuses.id', 'statuses.name']);
             }
         ])->find($id);
 
         return view('vehicle_detail', compact('vehicles'));
+    }
+
+    public function searchInfo(Request $request)
+    {
+        $vehicles = Vehicle::where('name', 'like', '%' . $request->key . '%')
+            ->orWhere('price', 'like', '%' . $request->key . '%')
+            ->paginate(6)
+            ->appends(request()->query());
+
+        return view('search', compact('vehicles'));
     }
 }

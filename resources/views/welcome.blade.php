@@ -2,9 +2,11 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <form class="row" action="" method="get">
+        <form class="row" action="{{ route('searchInfo') }}" method="get">
             <div class="col-md-10">
-                <input class="form-control" type="text" placeholder="{{ trans('messages.search placeholder') }}" aria-label="Search">
+                <input class="form-control" name="key" type="text"
+                       placeholder="{{ trans('messages.search placeholder') }}"
+                       aria-label="Search">
             </div>
             <div class="col-md-2">
                 <button type="submit" class="btn btn-success">{{ trans('messages.search') }}</button>
@@ -28,8 +30,8 @@
                             <div id="card" class="col-lg-4 col-md-6 mb-4">
                                 <div class="card h-100">
                                     <a href="{!! route('vehicleDetail', $vehicle['id']) !!}"><img class="card-img-top"
-                                                     src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
-                                                     alt=""></a>
+                                                                                                  src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
+                                                                                                  alt=""></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
                                             <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">{!! $vehicle['name'] !!}</a>
@@ -48,21 +50,20 @@
                                         <form action="{!! route('addCart') !!}" method="post">
                                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                            @if($vehicle['status_id'] == '1')
-                                                <input type="submit" value ="{{ trans('messages.book') }}" class="btn btn-info" disabled>
+                                            @if ($vehicle['status_id'] == 1)
+                                                <input type="submit" value="{{ trans('messages.book') }}"
+                                                       class="btn btn-info">
                                             @else
-                                                <input type="submit" value ="dathue" class="btn btn-info">
+                                                <input type="submit" value="{{ trans('messages.rented') }}"
+                                                       class="btn btn-dark" disabled>
                                             @endif
-{{--                                            <input type="submit" value ="<?php if ($vehicle['status_id'] == '2') { ?>--}}
-{{--                                                    {{ trans('messages.book') }}<?php } else { ?> <p>da thue</p>" <?php } ?>--}}
-{{--                                                   class="btn btn-info"  <?php if ($vehicle['status_id'] == '2'){ ?> disabled <?php   } ?>>--}}
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    {{ $vehicles->links() }}
+                    {{ $vehicles->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>

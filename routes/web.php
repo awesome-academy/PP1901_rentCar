@@ -136,3 +136,6 @@ Route::get('/renting info', 'BookingController@renting_info')->name('rentingInfo
 
 /*Vehicle detail page*/
 Route::get('/vehicle/{id}', 'HomeController@vehicle_detail')->name('vehicleDetail');
+
+/*Search page*/
+Route::get('/search', 'HomeController@searchInfo')->name('searchInfo');

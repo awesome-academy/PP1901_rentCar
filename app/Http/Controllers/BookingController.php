@@ -2,45 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Model\Vehicle;
 use App\Model\Renting;
-use Carbon\Carbon;
 
 class BookingController extends Controller
 {
     public function add_cart(Request $request)
     {
-        $carts = Session::get('carts');
-        $id_vehicle = $request->get('vehicle_id');
-        $vehicle_info = Vehicle::where('id', $id_vehicle)->with([
-            'type' => function ($query) {
-                $query->select(['types.id', 'types.name']);
-            },
+        if (Auth::check()) {
+            $carts = Session::get('carts');
+            $id_vehicle = $request->get('vehicle_id');
+            $vehicle_info = Vehicle::where('id', $id_vehicle)->with([
+                'type' => function ($query) {
+                    $query->select(['types.id', 'types.name']);
+                },
 
-            'color' => function ($query) {
-                $query->select(['colors.id', 'colors.name']);
-            },
+                'color' => function ($query) {
+                    $query->select(['colors.id', 'colors.name']);
+                },
 
-            've_status' => function ($query) {
-                $query->select(['ve_statuses.id', 've_statuses.name']);
-            }
-        ])->get()->toArray();
-        $carts[$id_vehicle]['id'] = $vehicle_info[0]['id'];
-        $carts[$id_vehicle]['name'] = $vehicle_info[0]['name'];
-        $carts[$id_vehicle]['type'] = $vehicle_info[0]['type']['name'];
-        $carts[$id_vehicle]['color'] = $vehicle_info[0]['color']['name'];
-        $carts[$id_vehicle]['ve_status'] = $vehicle_info[0]['ve_status']['name'];
-        $carts[$id_vehicle]['startdate'] = '';
-        $carts[$id_vehicle]['enddate'] = '';
-        $carts[$id_vehicle]['price'] = $vehicle_info[0]['price'];
-        $carts[$id_vehicle]['total'] = '';
-        Session::put('carts', $carts);
+                've_status' => function ($query) {
+                    $query->select(['ve_statuses.id', 've_statuses.name']);
+                }
+            ])->get()->toArray();
+            $carts[$id_vehicle]['id'] = $vehicle_info[0]['id'];
+            $carts[$id_vehicle]['name'] = $vehicle_info[0]['name'];
+            $carts[$id_vehicle]['type'] = $vehicle_info[0]['type']['name'];
+            $carts[$id_vehicle]['color'] = $vehicle_info[0]['color']['name'];
+            $carts[$id_vehicle]['ve_status'] = $vehicle_info[0]['ve_status']['name'];
+            $carts[$id_vehicle]['startdate'] = '';
+            $carts[$id_vehicle]['enddate'] = '';
+            $carts[$id_vehicle]['price'] = $vehicle_info[0]['price'];
+            $carts[$id_vehicle]['total'] = '';
+            Session::put('carts', $carts);
 
-        return redirect()->back();
+            return redirect()->back();
+        } else
+
+            return view('auth/login');
     }
 
     public function checkout()
@@ -70,6 +73,7 @@ class BookingController extends Controller
         }
         Session::put('carts', $carts);
 
+
         return redirect()->route('checkout');
     }
 
@@ -85,9 +89,24 @@ class BookingController extends Controller
     public function confirm()
     {
         $user = Auth::user();
+        $now = Carbon::now()->toDateString();
         $carts = Session::get('carts');
+        foreach ($carts as $cart) {
+            if (isset($cart['startdate']) && isset($cart['enddate'])) {
+                if ($cart['startdate'] < $now || $cart['enddate'] < $cart['startdate']) {
+                    Session::flash('message1', "Please input date again!");
 
-        return view('member/confirm', compact('carts', 'user'));
+                    return redirect()->back();
+                } else {
+
+                    return view('member/confirm', compact('carts', 'user'));
+                }
+            } else {
+                Session::flash('message2', "Start date, end date not empty!");
+
+                return redirect()->back();
+            }
+        }
     }
 
     public function store_cart(Request $request)
@@ -109,6 +128,7 @@ class BookingController extends Controller
             $vehicles->status_id = 2;
             $vehicles->save();
         }
+
         Renting::insert($data);
         $request->session()->forget('carts');
 
@@ -132,19 +152,5 @@ class BookingController extends Controller
         } else
 
             return view('member/non_renting');
-    }
-
-    public function cronjob()
-    {
-        $rentings = Renting::all();
-        $now = Carbon::now()->toDateString();
-        foreach ($rentings as $renting) {
-            if ($renting['end_date'] < $now) {
-                $vehicles = Vehicle::find($renting['vehicle_id']);
-                $vehicles->status_id = $value;
-                $vehicles->save();
-            }
-        }
-        return redirect()->route('welcome');
     }
 }

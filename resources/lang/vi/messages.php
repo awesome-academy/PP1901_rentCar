@@ -76,4 +76,6 @@ return [
     'access message' => 'Chúc mừng bạn đã thuê xe thành công!',
     'non renting message' => 'Không có xe nào được thuê!',
     'search placeholder' => 'Nhập nội dung cần tìm kiếm....',
+    'rented' => 'Đã thuê',
+    'search result' => 'Số lượng kết quả tìm kiếm: ',
 ];
