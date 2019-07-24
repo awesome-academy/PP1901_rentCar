@@ -4,7 +4,8 @@
     <div class="container">
         <form class="row" action="{{ route('searchInfo') }}" method="get">
             <div class="col-md-10">
-                <input class="form-control" name="key" type="text" placeholder="{{ trans('messages.search placeholder') }}"
+                <input class="form-control" name="key" type="text"
+                       placeholder="{{ trans('messages.search placeholder') }}"
                        aria-label="Search">
             </div>
             <div class="col-md-2">
@@ -62,7 +63,7 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $vehicles->links() }}
+                    {{ $vehicles->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>

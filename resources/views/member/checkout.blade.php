@@ -3,7 +3,13 @@
     <!-- Page Content -->
     <div class="container">
         <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
-        <br>
+        <br><br>
+        @if (Session::has('message1'))
+            <div class="alert alert-info">{{ Session::get('message1') }}</div>
+        @endif
+        @if (Session::has('message2'))
+            <div class="alert alert-info">{{ Session::get('message2') }}</div>
+        @endif
         <form method="post" action="{!! route('caculator') !!}">
             <table class="table">
                 <h2 style="text-align: center"><strong>{{ trans('messages.checkout info') }}</strong></h2>
