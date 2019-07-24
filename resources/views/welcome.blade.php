@@ -48,8 +48,14 @@
                                         <form action="{!! route('addCart') !!}" method="post">
                                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                            <input type="submit" value="{{ trans('messages.book') }}"
-                                                   class="btn btn-info">
+                                            @if($vehicle['status_id'] == '1')
+                                                <input type="submit" value ="{{ trans('messages.book') }}" class="btn btn-info" disabled>
+                                            @else
+                                                <input type="submit" value ="dathue" class="btn btn-info">
+                                            @endif
+{{--                                            <input type="submit" value ="<?php if ($vehicle['status_id'] == '2') { ?>--}}
+{{--                                                    {{ trans('messages.book') }}<?php } else { ?> <p>da thue</p>" <?php } ?>--}}
+{{--                                                   class="btn btn-info"  <?php if ($vehicle['status_id'] == '2'){ ?> disabled <?php   } ?>>--}}
                                         </form>
                                     </div>
                                 </div>

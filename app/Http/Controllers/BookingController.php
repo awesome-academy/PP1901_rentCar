@@ -105,27 +105,13 @@ class BookingController extends Controller
                 'updated_at' => date('Y-m-d H-i-s'),
             );
             $data[] = $pre_insert;
+            $vehicles = Vehicle::find($pre_insert['vehicle_id']);
+            $vehicles->status_id = 2;
+            $vehicles->save();
         }
         Renting::insert($data);
         $request->session()->forget('carts');
 
-        $rentings = Renting::all();
-        $vehicles = Vehicle::all();
-        $date = Carbon::now()->toDateTimeString();
-        foreach ($rentings as $renting) {
-            foreach ($vehicles as $vehicle) {
-                if (($vehicle['id'] == $renting['vehicle_id'])  && ($renting['end_date'] > $date)) {
-                    $value = 2;
-                } else {
-                    $value = 1;
-                };
-                $vehicles = Vehicle::find($renting['vehicle_id']);
-                if ($vehicles) {
-                    $vehicles->status_id = $value;
-                    $vehicles->save();
-                }
-            }
-        }
         return view('member/successfully');
     }
 
@@ -146,5 +132,19 @@ class BookingController extends Controller
         } else
 
             return view('member/non_renting');
+    }
+
+    public function cronjob()
+    {
+        $rentings = Renting::all();
+        $now = Carbon::now()->toDateString();
+        foreach ($rentings as $renting) {
+            if ($renting['end_date'] < $now) {
+                $vehicles = Vehicle::find($renting['vehicle_id']);
+                $vehicles->status_id = $value;
+                $vehicles->save();
+            }
+        }
+        return redirect()->route('welcome');
     }
 }
