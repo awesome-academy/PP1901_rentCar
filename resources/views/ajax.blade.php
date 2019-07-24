@@ -5,7 +5,7 @@
             <div id="card" class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     <a href="{!! route('vehicleDetail', $vehicle['id']) !!}"><img class="card-img-top"
-                                     src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"</a>
+                                                                                  src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"</a>
                     <div class="card-body">
                         <h4 class="card-title">
                             <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">{!! $vehicle['name'] !!}</a>
@@ -22,7 +22,13 @@
                         <form action="{!! route('addCart') !!}" method="post">
                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
+                            @if ($vehicle['status_id'] == 1)
+                                <input type="submit" value="{{ trans('messages.book') }}"
+                                       class="btn btn-info">
+                            @else
+                                <input type="submit" value="{{ trans('messages.rented') }}"
+                                       class="btn btn-dark" disabled>
+                            @endif
                         </form>
                     </div>
                 </div>
