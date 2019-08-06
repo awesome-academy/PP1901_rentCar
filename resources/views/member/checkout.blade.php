@@ -48,7 +48,7 @@
                     </tr>
                     @php($total += $cart['total'])
                 @endforeach
-                </tbody>
+            </tbody>
             </table>
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <input type="submit" value="{{ trans('messages.save') }}" class="btn btn-info">
