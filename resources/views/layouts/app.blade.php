@@ -13,9 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+/
     <!-- Script-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 
 </head>
 <body>

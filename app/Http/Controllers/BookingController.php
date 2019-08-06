@@ -43,7 +43,7 @@ class BookingController extends Controller
             return redirect()->back();
         } else
 
-            return view('auth/login');
+            return redirect()->route('login');
     }
 
     public function checkout()
