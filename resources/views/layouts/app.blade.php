@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-/
+
     <!-- Script-->
     <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 

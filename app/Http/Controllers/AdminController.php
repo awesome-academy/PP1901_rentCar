@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Type;
+use App\Repositories\UserRepositoryInterface;
+use App\Repositories\VehicleRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Model\Vehicle;
-use App\Model\Renting;
-use App\Model\User;
-use App\Model\Brand;
-use App\Model\Color;
-use App\Model\Ve_status;
-use App\Model\Status;
-use App\Model\Role;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -23,64 +16,41 @@ class AdminController extends Controller
     public $statuses;
     public $roles;
 
-    public function __construct()
+    protected $UserRepository;
+    protected $VehicleRepository;
+
+    public function __construct(
+        UserRepositoryInterface $UserRepository,
+        VehicleRepositoryInterface $VehicleRepository
+    )
     {
-        $this->types = Type::all();
-        $this->brands = Brand::all();
-        $this->colors = Color::all();
-        $this->ve_statuses = Ve_status::all();
-        $this->statuses = Status::all();
-        $this->roles = Role::all();
+        $this->UserRepository = $UserRepository;
+        $this->VehicleRepository = $VehicleRepository;
+        $this->types = $this->VehicleRepository->getAllType();
+        $this->brands = $this->VehicleRepository->getAllBrand();
+        $this->colors = $this->VehicleRepository->getAllColor();
+        $this->ve_statuses = $this->VehicleRepository->getAllVeStatus();
+        $this->statuses = $this->VehicleRepository->getAllStatus();
+        $this->roles = $this->UserRepository->getAllRole();
     }
 
     public function home_renting()
     {
-        $rentings = renting::with([
-            'user' => function ($query) {
-                $query->select(['users.id', 'users.name']);
-            },
-            'vehicle' => function ($query) {
-                $query->select(['vehicles.id', 'vehicles.name']);
-            }
-        ])->paginate(8);
+        $rentings = $this->VehicleRepository->getAllRenting();
 
         return view('admin.home_renting', compact('rentings'));
     }
 
     public function home_user()
     {
-        $users = user::with([
-            'role' => function ($query) {
-                $query->select(['roles.id', 'roles.name']);
-            }
-        ])->paginate(8);
+        $users = $this->UserRepository->getAllUser();
 
         return view('admin.home_user', compact('users'));
     }
 
     public function home_vehicle()
     {
-        $vehicles = vehicle::with([
-            'type' => function($query){
-            $query->select(['types.id', 'types.name']);
-            },
-
-            'brand' => function($query){
-            $query->select(['brands.id', 'brands.name']);
-            },
-
-            'color' => function($query){
-            $query->select(['colors.id', 'colors.name']);
-            },
-
-            've_status' => function($query){
-            $query->select(['ve_statuses.id', 've_statuses.name']);
-            },
-
-            'status' => function($query){
-            $query->select(['statuses.id', 'statuses.name']);
-            }
-        ])->paginate(8);
+        $vehicles = $this->VehicleRepository->getAllVehicle();
 
         return view('admin.home_vehicle', compact('vehicles'));
     }
@@ -88,7 +58,7 @@ class AdminController extends Controller
     public function edit_user($id)
     {
         $roles = $this->roles;
-        $users = User::find($id);
+        $users = $this->UserRepository->getUser($id);
 
         return view('admin.edit_user', compact('users', 'roles'));
     }
@@ -96,7 +66,7 @@ class AdminController extends Controller
     public function update_user(Request $request, $id)
     {
         $roles = $this->roles;
-        $users = User::find($id);
+        $users = $this->UserRepository->getUser($id);
         $users->name = $request->get('name');
         $users->birthday = $request->get('birthday');
         $users->email = $request->get('email');
@@ -114,7 +84,7 @@ class AdminController extends Controller
 
     public function delete_user(Request $request)
     {
-        $users = User::find($request->get('user_id'));
+        $users = $this->UserRepository->getUser($request->get('user_id'));
         $users->delete();
 
         return redirect()->route('homeUser')->with('mess_del_user', trans('messages.delete message'));
@@ -133,7 +103,7 @@ class AdminController extends Controller
 
     public function store_vehicle(Request $request)
     {
-        $vehicles = new Vehicle();
+        $vehicles = $this->VehicleRepository->createVehicle();
         $vehicles->name = $request->get('name');
         $vehicles->type_id = $request->get('type_id');
         $vehicles->brand_id = $request->get('brand_id');
@@ -158,7 +128,7 @@ class AdminController extends Controller
         $colors = $this->colors;
         $ve_statuses = $this->ve_statuses;
         $statuses = $this->statuses;
-        $vehicles = Vehicle::find($id);
+        $vehicles = $this->VehicleRepository->getVehicle($id);
 
         return view('admin.edit_vehicle', compact('vehicles', 'types', 'brands', 'colors', 've_statuses', 'statuses'));
     }
@@ -170,7 +140,7 @@ class AdminController extends Controller
         $colors = $this->colors;
         $ve_statuses = $this->ve_statuses;
         $statuses = $this->statuses;
-        $vehicles = Vehicle::find($id);
+        $vehicles = $this->VehicleRepository->getVehicle($id);
         $vehicles->name = $request->get('name');
         $vehicles->type_id = $request->get('type_id');
         $vehicles->brand_id = $request->get('brand_id');
@@ -189,7 +159,7 @@ class AdminController extends Controller
 
     public function delete_vehicle(Request $request)
     {
-        $vehicles = Vehicle::find($request->get('vehicle_id'));
+        $vehicles = $this->VehicleRepository->getVehicle($request->get('vehicle_id'));
         $vehicles->delete();
 
         return redirect()->route('homeVehicle')->with('mess_del_vehicle', trans('messages.delete message'));
