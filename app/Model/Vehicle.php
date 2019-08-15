@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $table = 'vehicles';
+    protected $guarded = ['id'];
+
     public function brand()
     {
         return $this->belongsTo('App\Model\Brand');
@@ -42,5 +44,9 @@ class Vehicle extends Model
 
     public function rentings(){
         return $this->hasMany('App\Model\Renting', 'vehicle_id');
+    }
+
+    public function ve_status(){
+        return $this->belongsTo('App\Model\Ve_status');
     }
 }

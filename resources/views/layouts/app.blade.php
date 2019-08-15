@@ -15,7 +15,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Script-->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">{{ trans('messages.vehicle') }}</a>
+                <a class="navbar-brand" href="{{ url('/') }}">{{ trans('messages.vehicle shop') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -47,23 +47,28 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @guest
-                        <li><a href="{{ route('login') }}">{{ trans('messages.login') }}</a></li>
-                        <li><a href="{{ route('register') }}">{{ trans('messages.register') }}</a></li>
+                    <li><a href="{{ route('login') }}">{{ trans('messages.login') }}</a></li>
+                    <li><a href="{{ route('register') }}">{{ trans('messages.register') }}</a></li>
                     @else
+                        <li>
+                            <a href="{{ route('checkout') }}">{{ trans('messages.checkout') }}</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false" aria-haspopup="true" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ route('editProfile',Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('rentingInfo') }}">{{ trans('messages.renting') }}</a>
+                                </li>
                                 @if (Auth::check() && Auth::user()->role_id == 0)
-                               <li>
-                                   <a href="{{ route('home_admin') }}">{{ trans('messages.dashboard') }}</a>
-                               </li>
+                                    <li>
+                                        <a href="{{ route('homeRenting') }}">{{ trans('messages.dashboard') }}</a>
+                                    </li>
                                 @endif
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -79,7 +84,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endguest
+                        @endguest
                 </ul>
             </div>
         </div>

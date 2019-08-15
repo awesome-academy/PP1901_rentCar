@@ -1,0 +1,16 @@
+{
+  "name": "Renting Car",
+  "description": "vanhauna",
+  "main": "bower.json",
+  "authors": [
+    "vanhauna"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-tagsinput": "0.6.1",
+    "jquery": "^3.4.1",
+    "Font-Awesome": "https://github.com/FortAwesome/Font-Awesome.git#^5.10.1"
+  }
+}

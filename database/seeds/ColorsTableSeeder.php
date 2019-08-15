@@ -12,7 +12,7 @@ class ColorsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<=6;$i++){
+        for ($i=0; $i<=6; $i++){
             DB::table('colors')->insert(
               [
                   'name'=>Str::random(10),
