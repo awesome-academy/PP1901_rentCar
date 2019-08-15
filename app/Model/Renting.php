@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Renting extends Model
 {
+    public $timestamps = true;
     public function user(){
-        return $this->belongsTo('app\Model\User');
+        return $this->belongsTo('App\Model\User');
     }
 
     public function vehicle(){
-        return $this->belongsTo('app\Model\Vehicle');
+        return $this->belongsTo('App\Model\Vehicle');
     }
 }

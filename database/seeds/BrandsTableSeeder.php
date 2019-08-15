@@ -12,7 +12,7 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<=5;$i++){
+        for ($i=0; $i<=5; $i++){
             DB::table('brands')->insert(
               [
                   'name'=>Str::random(10),
