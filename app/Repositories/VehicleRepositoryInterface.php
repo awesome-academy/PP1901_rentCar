@@ -56,7 +56,9 @@ interface VehicleRepositoryInterface
 
     public function getAllRenting();
 
-    public function getRenting($id);
+    public function getRentingWithUserID($id);
+
+    public function getRentingWithVehicleID($id);
 
     public function insertRenting($data);
 }

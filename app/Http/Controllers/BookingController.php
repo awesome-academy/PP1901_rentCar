@@ -23,19 +23,27 @@ class BookingController extends Controller
     {
         if (Auth::check()) {
             $carts = Session::get('carts');
+            $now = Carbon::now()->toDateString();
             $id_vehicle = $request->get('vehicle_id');
             $vehicle_info = $this->VehicleRepository->getDetailVehicle($id_vehicle);
+            $renting_infos = $this->VehicleRepository->getRentingWithVehicleID($id_vehicle);
             $carts[$id_vehicle]['id'] = $vehicle_info['id'];
+            $carts[$id_vehicle]['name'] = $vehicle_info['name'];
             $carts[$id_vehicle]['name'] = $vehicle_info['name'];
             $carts[$id_vehicle]['type'] = $vehicle_info['type']['name'];
             $carts[$id_vehicle]['color'] = $vehicle_info['color']['name'];
             $carts[$id_vehicle]['ve_status'] = $vehicle_info['ve_status']['name'];
+            foreach ($renting_infos as $renting_info) {
+                if ($renting_info['start_date'] >= $now || $renting_info['end_date'] >= $now ){
+                    $carts[$id_vehicle]['startdata'][] = $renting_info['start_date'];
+                    $carts[$id_vehicle]['enddata'][] = $renting_info['end_date'];
+                }
+            }
             $carts[$id_vehicle]['startdate'] = '';
             $carts[$id_vehicle]['enddate'] = '';
             $carts[$id_vehicle]['price'] = $vehicle_info['price'];
             $carts[$id_vehicle]['total'] = '';
             Session::put('carts', $carts);
-
             return redirect()->back();
         } else
 
@@ -121,7 +129,8 @@ class BookingController extends Controller
             );
             $data[] = $pre_insert;
             $vehicles = $this->VehicleRepository->getVehicle($pre_insert['vehicle_id']);
-            $vehicles->status_id = 2;
+            $current_count = $vehicles->count;
+            $vehicles->count = $current_count + 1;
             $vehicles->save();
         }
         $this->VehicleRepository->insertRenting($data);
@@ -133,7 +142,7 @@ class BookingController extends Controller
     public function renting_info()
     {
         $users = Auth::user();
-        $rentings = $this->VehicleRepository->getRenting($users['id']);
+        $rentings = $this->VehicleRepository->getRentingWithUserID($users['id']);
         if ($rentings) {
 
             return view('member/renting_info', compact('rentings'));

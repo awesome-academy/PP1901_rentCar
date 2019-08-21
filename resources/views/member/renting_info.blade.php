@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <div class="col-lg-12">
             <table class="table">
                 <h2 style="text-align: center"><strong>{{ trans('messages.renting info') }}</strong></h2>
