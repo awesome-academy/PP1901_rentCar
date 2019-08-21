@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <br><br>
         @if (Session::has('message1'))
             <div class="alert alert-info">{{ Session::get('message1') }}</div>
@@ -17,9 +17,8 @@
                 <tr>
                     <th scope="col">{{ trans('messages.id') }}</th>
                     <th scope="col">{{ trans('messages.vehicle name') }}</th>
-                    <th scope="col">{{ trans('messages.vehicle type') }}</th>
-                    <th scope="col">{{ trans('messages.color') }}</th>
-                    <th scope="col">{{ trans('messages.ve_status') }}</th>
+                    <th scope="col">{{ trans('messages.start date') }}</th>
+                    <th scope="col">{{ trans('messages.end date') }}</th>
                     <th scope="col">{{ trans('messages.start date') }}</th>
                     <th scope="col">{{ trans('messages.end date') }}</th>
                     <th scope="col">{{ trans('messages.price') }}</th>
@@ -31,14 +30,35 @@
                 @foreach($carts as $cart)
                     <tr>
                         <th scope="row">{!! $cart['id'] !!}</th>
-                        <td>{!! $cart['name'] !!}</td>
-                        <td>{!! $cart['type'] !!}</td>
-                        <td>{!! $cart['color'] !!}</td>
-                        <td>{!! $cart['ve_status'] !!}</td>
-                        <td><input type="date" class="form-control" value="{{ $cart['startdate'] }}"
-                                   name="start_date_{!! $cart['id'] !!}"></td>
-                        <td><input type="date" class="form-control" value="{{ $cart['enddate'] }}"
-                                   name="end_date_{!! $cart['id'] !!}"></td>
+                        <td><a href="{!! route('vehicleDetail', $cart['id']) !!}">{!! $cart['name'] !!}</a></td>
+                        <td>@if(isset($cart['startdata']))
+                                <strong>{{ trans('messages.booked') }}</strong>
+                                @foreach($cart['startdata'] as $startdata)
+                                    <li>{{ $startdata }}</li>
+                                @endforeach
+                            @else
+                                <p>{{ trans('messages.no book') }}</p>
+                            @endif </td>
+
+                        <td>@if(isset($cart['enddata']))
+                                <strong>{{ trans('messages.booked') }}</strong>
+                                @foreach($cart['enddata'] as $enddata)
+                                    <li>{{ $enddata }}</li>
+                                @endforeach
+                            @else
+                                <p>{{ trans('messages.no book') }}</p>
+                            @endif </td>
+                        </td>
+                        <td>
+                            <strong>{{ trans('messages.select') }}</strong>
+                            <input type="date" class="form-control" value="{{ $cart['startdate'] }}"
+                                   name="start_date_{!! $cart['id'] !!}">
+                        </td>
+                        <td>
+                            <strong>{{ trans('messages.select') }}</strong>
+                            <input type="date" class="form-control" value="{{ $cart['enddate'] }}"
+                                   name="end_date_{!! $cart['id'] !!}">
+                        </td>
                         <td>{!! $cart['price'] !!} VND</td>
                         <td>{!! $cart['total'] !!} VND</td>
                         <td>
@@ -48,7 +68,7 @@
                     </tr>
                     @php($total += $cart['total'])
                 @endforeach
-            </tbody>
+                </tbody>
             </table>
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <input type="submit" value="{{ trans('messages.save') }}" class="btn btn-info">
