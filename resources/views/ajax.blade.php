@@ -22,13 +22,7 @@
                         <form action="{!! route('addCart') !!}" method="post">
                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                            @if ($vehicle['status_id'] == 1)
-                                <input type="submit" value="{{ trans('messages.book') }}"
-                                       class="btn btn-info">
-                            @else
-                                <input type="submit" value="{{ trans('messages.rented') }}"
-                                       class="btn btn-dark" disabled>
-                            @endif
+                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
                         </form>
                     </div>
                 </div>

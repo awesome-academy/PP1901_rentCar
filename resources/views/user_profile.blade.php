@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <form class="form-horizontal" method="POST" action="{{ route('updateProfile',Auth::user()->id) }}">
             {{ csrf_field() }}
             <div>

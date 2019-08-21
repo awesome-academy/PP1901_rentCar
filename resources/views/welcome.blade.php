@@ -43,20 +43,13 @@
                                         </h5>
                                         <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle['price'] !!}
                                             VND</h5>
-                                        <h5><strong>{{ trans('messages.rating') }}:</strong>
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
-                                            </small>
+                                        <h5><strong>{{ trans('messages.count') }}: </strong>{!! $vehicle['count'] !!}
                                         </h5>
                                         <form action="{!! route('addCart') !!}" method="post">
                                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                            @if ($vehicle['status_id'] == 1)
-                                                <input type="submit" value="{{ trans('messages.book') }}"
-                                                       class="btn btn-info">
-                                            @else
-                                                <input type="submit" value="{{ trans('messages.rented') }}"
-                                                       class="btn btn-dark" disabled>
-                                            @endif
+                                            <input type="submit" value="{{ trans('messages.book') }}"
+                                                   class="btn btn-info">
                                         </form>
                                     </div>
                                 </div>
