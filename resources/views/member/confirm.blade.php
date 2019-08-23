@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! route('checkout') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <br>
         <form method="get" action="{!! route('confirm') !!}">
             <h2 style="text-align: center"><strong>{{ trans('messages.user info') }}</strong></h2>

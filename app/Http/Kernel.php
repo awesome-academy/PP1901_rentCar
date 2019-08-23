@@ -3,6 +3,9 @@
 namespace App\Http;
 
 use App\Http\Middleware\CheckAdmin;
+use App\Http\Middleware\CheckGuest;
+use App\Http\Middleware\CheckNotUserAndGuest;
+use App\Http\Middleware\CheckUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -59,5 +62,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'checkAdmin' => CheckAdmin::class,
+        'checkUser' => CheckUser::class,
+        'checkGuest' => CheckGuest::class,
+        'checkNotUserAndGuest'=> CheckNotUserAndGuest::class,
     ];
 }

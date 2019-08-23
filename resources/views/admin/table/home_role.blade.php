@@ -2,7 +2,6 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
         @if (session('mess_del_role'))
             <p class="allert alert-success">{{ session('mess_del_role') }}</p>
         @endif

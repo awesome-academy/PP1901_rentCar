@@ -256,7 +256,7 @@ class VehicleRepository implements VehicleRepositoryInterface
         return $rentings;
     }
 
-    public function getRenting($id)
+    public function getRentingWithUserID($id)
     {
         $rentings = Renting::where('user_id', '=', $id)->with([
             'user' => function ($query) {
@@ -266,6 +266,13 @@ class VehicleRepository implements VehicleRepositoryInterface
                 $query->select(['vehicles.id', 'vehicles.name']);
             }
         ])->paginate(8);
+
+        return $rentings;
+    }
+
+    public function getRentingWithVehicleID($id)
+    {
+        $rentings = Renting::where('vehicle_id', '=', $id)->get()->toArray();
 
         return $rentings;
     }
