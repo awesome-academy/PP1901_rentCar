@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <h2 style="text-align: center"><strong>{{ trans('messages.vehicle info') }}</strong></h2>
-        <a class="btn btn-info" href="{!! route('homeVehicle') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <form class="form-horizontal" method="POST" action="{{ route('storeVehicle') }}">
             {{ csrf_field() }}
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

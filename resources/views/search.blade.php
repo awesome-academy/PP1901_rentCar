@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! route('welcome') !!}">{{ trans('messages.back') }}</a>
+        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <br>
         <h3 class="pull-3"><strong>{{ trans('messages.search result') }} {{ $vehicles->total() }}</strong></h3>
         <br>
