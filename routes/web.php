@@ -130,7 +130,7 @@ Route::post('/admin/role/delete', 'TableController@delete_role')->middleware('ch
 
 /*Cart page*/
 
-Route::post('/add cart', 'BookingController@add_cart')->middleware('checkUser')->name('addCart');
+Route::post('/add cart', 'BookingController@add_cart')->name('addCart');
 Route::get('/checkout', 'BookingController@checkout')->middleware('checkUser')->name('checkout');
 Route::post('/checkout', 'BookingController@caculator')->middleware('checkUser')->name('caculator');
 Route::post('/checkout/delete/{id}', 'BookingController@delete_cart')->middleware('checkUser')->name('deleteCart');

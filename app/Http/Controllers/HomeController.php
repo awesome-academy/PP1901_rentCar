@@ -20,6 +20,12 @@ class HomeController extends Controller
     {
         $types = $this->VehicleRepository->getAllType();
         $vehicles = $this->VehicleRepository->getAllVehicle();
+        foreach ($vehicles as $vehicle) {
+            $images = $this->VehicleRepository->getOneImage($vehicle['id']);
+            if ($images) {
+                $vehicle['image'] = $images['path'];
+            }
+        }
 
         return view('welcome', compact('vehicles', 'types'));
     }
@@ -34,6 +40,12 @@ class HomeController extends Controller
             've_status' => function ($query) {
                 $query->select(['ve_statuses.id', 've_statuses.name']);
             }])->paginate(6);
+        foreach ($vehicles as $vehicle) {
+            $images = $this->VehicleRepository->getOneImage($vehicle['id']);
+            if ($images) {
+                $vehicle['image'] = $images['path'];
+            }
+        }
 
         return view('ajax', compact('vehicles'));
     }
@@ -41,8 +53,9 @@ class HomeController extends Controller
     public function vehicle_detail($id)
     {
         $vehicles = $this->VehicleRepository->getDetailVehicle($id);
+        $image = $this->VehicleRepository->getOneImage($id);
 
-        return view('vehicle_detail', compact('vehicles'));
+        return view('vehicle_detail', compact('vehicles', 'image'));
     }
 
     public function searchInfo(Request $request)

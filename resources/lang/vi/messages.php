@@ -81,4 +81,5 @@ return [
     'booked' => 'Đã đặt',
     'no book' => 'Chưa được đặt',
     'select' => 'Chọn',
+    'image' => 'Hình ảnh',
 ];

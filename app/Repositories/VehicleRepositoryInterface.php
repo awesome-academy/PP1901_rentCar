@@ -60,5 +60,11 @@ interface VehicleRepositoryInterface
 
     public function getRentingWithVehicleID($id);
 
+    public function getRentingNow();
+
     public function insertRenting($data);
+
+    public function createNewImage();
+
+    public function getOneImage($id);
 }

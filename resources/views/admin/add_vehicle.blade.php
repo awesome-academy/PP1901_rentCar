@@ -2,8 +2,8 @@
 @section('content')
     <div class="container">
         <h2 style="text-align: center"><strong>{{ trans('messages.vehicle info') }}</strong></h2>
-        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
-        <form class="form-horizontal" method="POST" action="{{ route('storeVehicle') }}">
+        <a class="btn btn-info" href="{!! route('homeVehicle') !!}">{{ trans('messages.back') }}</a>
+        <form class="form-horizontal" method="POST" action="{{ route('storeVehicle') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">{{ trans('messages.name') }}</label>
@@ -98,6 +98,15 @@
                             <option value="{!! $status->id !!}">{!! $status->name !!}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                <label for="image"
+                       class="col-md-4 control-label">{{ trans('messages.image') }}</label>
+
+                <div class="col-md-6">
+                    <input type="file" class="form-control" name="images[]" required/>
                 </div>
             </div>
 
