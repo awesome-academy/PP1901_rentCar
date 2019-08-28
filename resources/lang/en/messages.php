@@ -81,4 +81,5 @@ return [
     'booked' => 'Booked',
     'no book' => 'No book info',
     'select' => 'Select',
+    'image' => 'Image',
 ];

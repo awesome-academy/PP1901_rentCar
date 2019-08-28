@@ -4,11 +4,13 @@ namespace App\Repositories;
 
 use App\Model\Brand;
 use App\Model\Color;
+use App\Model\Image;
 use App\Model\Renting;
 use App\Model\Status;
 use App\Model\Type;
 use App\Model\Ve_status;
 use App\Model\Vehicle;
+use Carbon\Carbon;
 
 class VehicleRepository implements VehicleRepositoryInterface
 {
@@ -277,8 +279,31 @@ class VehicleRepository implements VehicleRepositoryInterface
         return $rentings;
     }
 
+    public function getRentingNow()
+    {
+        $now = Carbon::now()->toDateString();
+        $rentings = Renting::where('start_date', '>=', $now)
+            ->orWhere('end_date', '>=', $now)->get()->toArray();
+
+        return $rentings;
+    }
+
     public function insertRenting($data)
     {
         Renting::insert($data);
+    }
+
+    public function createNewImage()
+    {
+        $images = New Image();
+
+        return $images;
+    }
+
+    public function getOneImage($id)
+    {
+        $image = Image::where('vehicle_id', '=', $id)->get()->last();
+
+        return $image;
     }
 }

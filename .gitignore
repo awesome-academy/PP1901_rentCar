@@ -2,6 +2,7 @@ vendor/
 node_modules/
 npm-debug.log
 public/bower_components/
+public/upload_image/
 
 # Laravel 4 specific
 bootstrap/compiled.php

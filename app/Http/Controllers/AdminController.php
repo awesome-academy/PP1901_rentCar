@@ -113,12 +113,24 @@ class AdminController extends Controller
         $vehicles->ve_status_id = $request->get('ve_status_id');
         $vehicles->price = $request->get('price');
         $vehicles->status_id = $request->get('status_id');
+        $images = $request->file('images');
+        if ($vehicles->save()) {
+            foreach ($images as $image) {
+                $new_image = $this->VehicleRepository->createNewImage();
+                $extension = $image->getClientOriginalName();
+                $FileName = $extension .'_' .time();
+                $image->move('upload_image/', $FileName);
+                $new_image->path = $FileName;
+                $new_image->vehicle_id = $vehicles->id;
+                $new_image->save();
+            }
+        }
         $mess = "";
         if ($vehicles->save()) {
             $mess = trans('messages.add message');
         }
 
-        return redirect()->route('editVehicle', $vehicles->id)->with('mess', $mess);
+        return redirect()->route('vehicleDetail', $vehicles->id)->with('mess', $mess);
     }
 
     public function edit_vehicle($id)
@@ -135,11 +147,6 @@ class AdminController extends Controller
 
     public function update_vehicle(Request $request, $id)
     {
-        $types = $this->types;
-        $brands = $this->brands;
-        $colors = $this->colors;
-        $ve_statuses = $this->ve_statuses;
-        $statuses = $this->statuses;
         $vehicles = $this->VehicleRepository->getVehicle($id);
         $vehicles->name = $request->get('name');
         $vehicles->type_id = $request->get('type_id');
@@ -148,13 +155,25 @@ class AdminController extends Controller
         $vehicles->ve_status_id = $request->get('ve_status_id');
         $vehicles->price = $request->get('price');
         $vehicles->status_id = $request->get('status_id');
+        $images = $request->file('images');
+        if ($vehicles->save()) {
+            foreach ($images as $image) {
+                $new_image = $this->VehicleRepository->createNewImage();
+                $extension = $image->getClientOriginalName();
+                $FileName = $extension .'_' .time();
+                $image->move('upload_image/', $FileName);
+                $new_image->path = $FileName;
+                $new_image->vehicle_id = $vehicles->id;
+                $new_image->save();
+            }
+        }
         $mess = "";
         if ($vehicles->save()) {
             $mess = trans('messages.update message');
         }
         Session::flash('mess', $mess);
 
-        return view('admin.edit_vehicle', compact('vehicles', 'types', 'brands', 'colors', 've_statuses', 'statuses'));
+        return redirect()->route('vehicleDetail', $vehicles->id)->with('mess', $mess);
     }
 
     public function delete_vehicle(Request $request)
