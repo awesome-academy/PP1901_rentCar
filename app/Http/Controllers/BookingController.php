@@ -77,7 +77,6 @@ class BookingController extends Controller
         }
         Session::put('carts', $carts);
 
-
         return redirect()->route('checkout');
     }
 
