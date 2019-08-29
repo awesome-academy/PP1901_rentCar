@@ -226,4 +226,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
     ],
 
+    'noimage' => '/upload_image/noimage.jpg',
+
 ];

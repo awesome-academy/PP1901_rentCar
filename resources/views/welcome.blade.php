@@ -32,7 +32,7 @@
                                     <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">
                                         @if(isset($vehicle['image']))
                                             <img class="card-img-top" src="/upload_image/{!! $vehicle['image'] !!}">
-                                        @else <img class="card-img-top" src="/upload_image/noimage.jpg">
+                                        @else <img class="card-img-top" src="{{ config('app.noimage') }}">
                                         @endif
                                     </a>
                                     <div class="card-body">
@@ -53,8 +53,7 @@
                                         <form action="{!! route('addCart') !!}" method="post">
                                             <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                            <input type="submit" value="{{ trans('messages.book') }}"
-                                                   class="btn btn-info">
+                                            <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
                                         </form>
                                     </div>
                                 </div>
