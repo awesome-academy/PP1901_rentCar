@@ -12,6 +12,8 @@ interface VehicleRepositoryInterface
 
     public function getVehicleSearch($request);
 
+    public function updateStatusID();
+
     public function createVehicle();
 
     public function getAllType();

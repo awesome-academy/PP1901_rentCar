@@ -7,7 +7,7 @@
                     <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">
                         @if(isset($vehicle['image']))
                             <img class="card-img-top" src="/upload_image/{!! $vehicle['image'] !!}">
-                        @else <img class="card-img-top" src="/upload_image/noimage.jpg">
+                        @else <img class="card-img-top" src="{{ config('app.noimage') }}">
                         @endif
                     </a>
                     <div class="card-body">

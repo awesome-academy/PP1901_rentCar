@@ -143,4 +143,11 @@ Route::get('/renting info', 'BookingController@renting_info')->middleware('check
 Route::get('/vehicle/{id}', 'HomeController@vehicle_detail')->name('vehicleDetail');
 
 /*Search page*/
+
 Route::get('/search', 'HomeController@searchInfo')->name('searchInfo');
+
+/*Change Password*/
+
+Route::get('/changePassword','HomeController@showChangePasswordForm');
+Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
+
