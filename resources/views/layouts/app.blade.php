@@ -66,7 +66,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('editProfile',Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
+                                    <a href="{{ route('editProfile', Auth::user()->id) }}">{{ trans('messages.profile') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('changePassword', Auth::user()->id) }}">{{ trans('messages.change password') }}</a>
                                 </li>
                                 @if (Auth::check() && Auth::user()->role_id == 1)
                                     <li>

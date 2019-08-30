@@ -15,7 +15,7 @@
             <div class="col-md-4">
                 @if(isset($image))
                     <img class="image" src="/upload_image/{{ $image->path }}">
-                @else <img class="image" src="/upload_image/noimage.jpg">
+                @else <img class="image" src="{{ config('app.noimage') }}">
                 @endif
             </div>
             <div class="col-md-8">
@@ -32,6 +32,7 @@
                 <br>
                 <label for="card_id">{{ trans('messages.price') }} :</label> {!! $vehicles['price'] !!} VND <br>
                 <label for="phone">{{ trans('messages.status') }} :</label> {!! $vehicles['status']['name'] !!} <br>
+                <label for="count">{{ trans('messages.count') }} :</label> {!! $vehicles['count'] !!} <br>
                 @if (Auth::check() && Auth::user()->role_id == 0)
                     <a class="btn btn-info"
                        href="{!! route('editVehicle', $vehicles['id']) !!}">{{ trans('messages.edit') }}</a>

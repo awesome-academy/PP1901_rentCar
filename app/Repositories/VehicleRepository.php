@@ -11,7 +11,6 @@ use App\Model\Type;
 use App\Model\Ve_status;
 use App\Model\Vehicle;
 use Carbon\Carbon;
-
 class VehicleRepository implements VehicleRepositoryInterface
 {
     /* Vehicle */
@@ -89,6 +88,13 @@ class VehicleRepository implements VehicleRepositoryInterface
     public function createVehicle()
     {
         $vehicles = new Vehicle();
+
+        return $vehicles;
+    }
+
+    public function updateStatusID()
+    {
+        $vehicles = Vehicle::query()->update(['status_id' => 1]);
 
         return $vehicles;
     }

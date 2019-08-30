@@ -14,9 +14,12 @@
                     @foreach($vehicles as $vehicle)
                         <div id="card" class="col-lg-4 col-md-6 mb-4">
                             <div class="card h-100">
-                                <a href="{!! route('vehicleDetail', $vehicle['id']) !!}"><img class="card-img-top"
-                                                                                              src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg"
-                                                                                              alt=""></a>
+                                <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">
+                                    @if(isset($vehicle['image']))
+                                        <img class="card-img-top" src="/upload_image/{!! $vehicle['image'] !!}">
+                                    @else <img class="card-img-top" src="{{ config('app.noimage') }}">
+                                    @endif
+                                </a>
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <a href="{!! route('vehicleDetail', $vehicle['id']) !!}">{!! $vehicle['name'] !!}</a>
@@ -28,20 +31,13 @@
                                     </h5>
                                     <h5><strong>{{ trans('messages.price') }}: </strong>{!! $vehicle['price'] !!}
                                         VND</h5>
-                                    <h5><strong>{{ trans('messages.rating') }}:</strong>
-                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
-                                        </small>
+                                    <h5><strong>{{ trans('messages.count') }}
+                                            : </strong>{!! $vehicle['count'] !!}
                                     </h5>
                                     <form action="{!! route('addCart') !!}" method="post">
                                         <input type="hidden" name="vehicle_id" value="{!! $vehicle['id'] !!}">
                                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                        @if ($vehicle['status_id'] == 1)
-                                            <input type="submit" value="{{ trans('messages.book') }}"
-                                                   class="btn btn-info">
-                                        @else
-                                            <input type="submit" value="{{ trans('messages.rented') }}"
-                                                   class="btn btn-dark" disabled>
-                                        @endif
+                                        <input type="submit" value="{{ trans('messages.book') }}" class="btn btn-info">
                                     </form>
                                 </div>
                             </div>
