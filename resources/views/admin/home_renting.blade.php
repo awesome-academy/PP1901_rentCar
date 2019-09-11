@@ -2,7 +2,6 @@
 @section('content')
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <div class="row">
             <div class="col-lg-3">
                 <h3 class="my-4">{{ trans('messages.menu admin') }}</h3>

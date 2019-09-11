@@ -27,6 +27,10 @@ Route::get('/ajax', 'HomeController@ajax')->name('ajaxGetVehicle');
 Route::get('/profile/{id}', 'ProfileController@edit')->name('editProfile');
 Route::post('/profile/{id}', 'ProfileController@update')->name('updateProfile');
 
+/*Admin home page*/
+
+Route::get('/dashboard', 'AdminController@home_renting')->name('dashboard');
+
 /*Renting page*/
 
 Route::get('/admin/renting', 'AdminController@home_renting')->name('homeRenting');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Renting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ class BookingController extends Controller
             $carts[$id_vehicle]['color'] = $vehicle_info['color']['name'];
             $carts[$id_vehicle]['ve_status'] = $vehicle_info['ve_status']['name'];
             foreach ($renting_infos as $renting_info) {
-                if ($renting_info['start_date'] >= $now || $renting_info['end_date'] >= $now ){
+                if ($renting_info['start_date'] >= $now || $renting_info['end_date'] >= $now) {
                     $carts[$id_vehicle]['startdata'][] = $renting_info['start_date'];
                     $carts[$id_vehicle]['enddata'][] = $renting_info['end_date'];
                 }
@@ -99,15 +100,12 @@ class BookingController extends Controller
             if (isset($cart['startdate']) && isset($cart['enddate'])) {
                 if ($cart['startdate'] < $now || $cart['enddate'] < $cart['startdate']) {
                     Session::flash('message1', "Please input date again!");
-
                     return redirect()->back();
                 } else {
-
                     return view('member/confirm', compact('carts', 'user'));
                 }
             } else {
                 Session::flash('message2', "Start date, end date not empty!");
-
                 return redirect()->back();
             }
         }
@@ -139,7 +137,8 @@ class BookingController extends Controller
         return view('member/successfully');
     }
 
-    public function renting_info()
+    public
+    function renting_info()
     {
         $users = Auth::user();
         $rentings = $this->VehicleRepository->getRentingWithUserID($users['id']);

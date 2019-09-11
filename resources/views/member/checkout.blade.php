@@ -51,12 +51,12 @@
                         </td>
                         <td>
                             <strong>{{ trans('messages.select') }}</strong>
-                            <input type="date" class="form-control" value="{{ $cart['startdate'] }}"
+                            <input type="date" id="calendar" class="form-control" value="{{ $cart['startdate'] }}"
                                    name="start_date_{!! $cart['id'] !!}">
                         </td>
                         <td>
                             <strong>{{ trans('messages.select') }}</strong>
-                            <input type="date" class="form-control" value="{{ $cart['enddate'] }}"
+                            <input type="date" id="calendar" class="form-control" value="{{ $cart['enddate'] }}"
                                    name="end_date_{!! $cart['id'] !!}">
                         </td>
                         <td>{!! $cart['price'] !!} VND</td>
@@ -95,5 +95,8 @@
                 });
             });
         })
+
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById("calendar").setAttribute('min', today);
     </script>
 @endsection
