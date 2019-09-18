@@ -31,6 +31,10 @@ Route::post('/profile/{id}', 'ProfileController@update')->middleware('checkGuest
 
 Route::get('/admin', 'AdminController@home_renting')->middleware('checkAdmin')->name('dashboard');
 
+/*Admin home page*/
+
+Route::get('/dashboard', 'AdminController@home_renting')->name('dashboard');
+
 /*Renting page*/
 
 Route::get('/admin/renting', 'AdminController@home_renting')->middleware('checkAdmin')->name('homeRenting');

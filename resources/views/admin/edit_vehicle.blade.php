@@ -111,7 +111,7 @@
                        class="col-md-4 control-label">{{ trans('messages.image') }}</label>
 
                 <div class="col-md-6">
-                    <input type="file" class="form-control" name="images[]" required />
+                    <input type="file" class="form-control" name="images[]" />
                 </div>
             </div>
 

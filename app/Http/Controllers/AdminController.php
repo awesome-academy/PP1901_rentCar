@@ -115,14 +115,16 @@ class AdminController extends Controller
         $vehicles->status_id = $request->get('status_id');
         $images = $request->file('images');
         if ($vehicles->save()) {
-            foreach ($images as $image) {
-                $new_image = $this->VehicleRepository->createNewImage();
-                $extension = $image->getClientOriginalName();
-                $FileName = $extension .'_' .time();
-                $image->move('upload_image/', $FileName);
-                $new_image->path = $FileName;
-                $new_image->vehicle_id = $vehicles->id;
-                $new_image->save();
+            if ($images){
+                foreach ($images as $image) {
+                    $new_image = $this->VehicleRepository->createNewImage();
+                    $extension = $image->getClientOriginalName();
+                    $FileName = $extension . '_' . time();
+                    $image->move('upload_image/', $FileName);
+                    $new_image->path = $FileName;
+                    $new_image->vehicle_id = $vehicles->id;
+                    $new_image->save();
+                }
             }
         }
         $mess = "";
@@ -157,14 +159,16 @@ class AdminController extends Controller
         $vehicles->status_id = $request->get('status_id');
         $images = $request->file('images');
         if ($vehicles->save()) {
-            foreach ($images as $image) {
-                $new_image = $this->VehicleRepository->createNewImage();
-                $extension = $image->getClientOriginalName();
-                $FileName = $extension .'_' .time();
-                $image->move('upload_image/', $FileName);
-                $new_image->path = $FileName;
-                $new_image->vehicle_id = $vehicles->id;
-                $new_image->save();
+            if ($images){
+                foreach ($images as $image) {
+                    $new_image = $this->VehicleRepository->createNewImage();
+                    $extension = $image->getClientOriginalName();
+                    $FileName = $extension . '_' . time();
+                    $image->move('upload_image/', $FileName);
+                    $new_image->path = $FileName;
+                    $new_image->vehicle_id = $vehicles->id;
+                    $new_image->save();
+                }
             }
         }
         $mess = "";

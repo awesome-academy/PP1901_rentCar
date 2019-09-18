@@ -44,6 +44,7 @@ class BookingController extends Controller
             $carts[$id_vehicle]['price'] = $vehicle_info['price'];
             $carts[$id_vehicle]['total'] = '';
             Session::put('carts', $carts);
+
             return redirect()->back();
         } else
 
