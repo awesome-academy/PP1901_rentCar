@@ -60,7 +60,7 @@
                     @foreach($vehicles as $vehicle)
                         <tr>
                             <th scope="row">{!! $vehicle['id'] !!}</th>
-                            <td>{!! $vehicle['name'] !!}</td>
+                            <td><a href="{!! route('vehicleDetail', $vehicle['id']) !!}">{!! $vehicle['name'] !!}</a></td>
                             <td>{!! $vehicle['type']['name'] !!}</td>
                             <td>{!! $vehicle['brand']['name'] !!}</td>
                             <td>{!! $vehicle['color']['name'] !!}</td>

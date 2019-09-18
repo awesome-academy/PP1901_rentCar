@@ -3,13 +3,20 @@
     <div class="container">
         <a class="btn btn-info" href="{!! URL::previous() !!}">{{ trans('messages.back') }}</a>
         <br>
+        <div>
+            @if(Session::has('mess'))
+                <p class="alert alert-success">{!! session('mess') !!}</p>
+            @endif
+        </div>
         <h2 style="text-align: center"><strong>{{ trans('messages.vehicle info') }}</strong></h2>
         <div class="col-md-2">
         </div>
         <div class="col-md-10">
             <div class="col-md-4">
-                <img class="image"
-                     src="https://forgiato.com/wp-content/uploads/2015/03/bentley-flying-forgiato-32015-8-300x300.jpg">
+                @if(isset($image))
+                    <img class="image" src="/upload_image/{{ $image->path }}">
+                @else <img class="image" src="{{ config('app.noimage') }}">
+                @endif
             </div>
             <div class="col-md-8">
                 <label for="name">{{ trans('messages.name') }} : </label> {!! $vehicles['name'] !!} <br>
@@ -25,16 +32,18 @@
                 <br>
                 <label for="card_id">{{ trans('messages.price') }} :</label> {!! $vehicles['price'] !!} VND <br>
                 <label for="phone">{{ trans('messages.status') }} :</label> {!! $vehicles['status']['name'] !!} <br>
-                <label for="phone">{{ trans('messages.rating') }} :
-                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;
-                    </small>
-                    <br>
+                <label for="count">{{ trans('messages.count') }} :</label> {!! $vehicles['count'] !!} <br>
+                @if (Auth::check() && Auth::user()->role_id == 0)
+                    <a class="btn btn-info"
+                       href="{!! route('editVehicle', $vehicles['id']) !!}">{{ trans('messages.edit') }}</a>
+                @else
                     <form action="{!! route('addCart') !!}" method="post">
                         <input type="hidden" name="vehicle_id" value="{!! $vehicles['id'] !!}">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <input type="submit" value="{{ trans('messages.book') }}"
                                class="btn btn-info">
                     </form>
+                @endif
             </div>
         </div>
 @endsection

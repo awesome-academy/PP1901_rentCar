@@ -81,4 +81,11 @@ return [
     'booked' => 'Đã đặt',
     'no book' => 'Chưa được đặt',
     'select' => 'Chọn',
+    'image' => 'Hình ảnh',
+    'change password' => 'Thay đổi mật khẩu',
+    'current password' => 'Mật khẩu hiện tại',
+    'new password' => 'Mật khẩu mới',
+    'error current password' => 'Mật khẩu hiện tại không đúng, vui lòng nhập lại!',
+    'error password is same' => 'Mật khẩu mới không được giống mật khẩu hiện tại, vui lòng nhập lại!',
+    'change password success' => 'Thay đổi mật khẩu thành công!',
 ];
